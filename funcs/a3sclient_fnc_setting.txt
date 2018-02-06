@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_setting'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_setting';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\functions\fn_setting.sqf [A3SClient_fnc_setting]"
+
+scriptName"fn_setting";_setting =param[0,"",[""]];_value =param[1,nil];if(_setting isEqualTo"") exitWith{};if(isNil"_value") then{profileNamespace getVariable format["a3s_setting_%1",_setting];
+}else{profileNamespace setVariable[format["a3s_setting_%1",_setting],_value];saveProfileNamespace;};
+}

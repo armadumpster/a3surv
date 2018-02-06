@@ -1,0 +1,563 @@
+class A3SClient
+	{
+		tag = "A3SClient";
+		class bin_scripts_ui
+		{
+			file = "A3S_client\bin\ui\functions";
+			class RscDisplayMainMenu
+			{
+			};
+		};
+		class bin_scripts
+		{
+			file = "A3S_client\bin\scripts";
+			class preInit
+			{
+				preInit = 1;
+			};
+			class postInit
+			{
+				postInit = 1;
+			};
+			class login
+			{
+				ext = ".fsm";
+			};
+			class Configuration
+			{
+			};
+			class initMusic
+			{
+			};
+			class init_client
+			{
+			};
+		};
+		class bin_scripts_basebuilding
+		{
+			file = "A3S_client\bin\scripts\basebuilding";
+			class Construction_beginNewObject
+			{
+			};
+			class Construction_buildRequest
+			{
+			};
+			class Construction_buildResponse
+			{
+			};
+			class Construction_canBuildHere
+			{
+			};
+			class Construction_Delete
+			{
+			};
+			class Construction_handleAbort
+			{
+			};
+			class Construction_initBuilding
+			{
+			};
+			class Construction_MoveObject
+			{
+			};
+			class Construction_MoveRequest
+			{
+			};
+			class Construction_MoveResponse
+			{
+			};
+			class Construction_thread
+			{
+			};
+			class Construction_Upgrade
+			{
+			};
+			class gui_constructionMode_update
+			{
+			};
+			class saveInventory
+			{
+			};
+			class savePlayerData
+			{
+			};
+			class savePlayerDataPatrial
+			{
+			};
+			class util_math_getPositionInDirection
+			{
+			};
+		};
+		class bin_scripts_crafting
+		{
+			file = "A3S_client\bin\scripts\crafting";
+			class gui_click_craftinglist_show
+			{
+			};
+			class gui_craftinglist_show
+			{
+			};
+			class gui_CraftingMenu
+			{
+			};
+			class gui_crafting_show
+			{
+			};
+			class gui_itemDetails_event_onCraftingRecipeDoubleClick
+			{
+			};
+			class gui_itemDetails_event_onTabButtonClicked
+			{
+			};
+			class gui_itemDetails_show
+			{
+			};
+			class gui_itemDetails_show_test
+			{
+			};
+			class util_item_getCategoryCraftingRecipes
+			{
+			};
+			class util_item_getCraftingRecipes
+			{
+			};
+		};
+		class bin_scripts_database
+		{
+			file = "A3S_client\bin\scripts\database";
+			class evaluatePlayerData
+			{
+			};
+			class loadInventory
+			{
+			};
+			class onPauseSave
+			{
+			};
+			class receiveData
+			{
+			};
+			class requestData
+			{
+			};
+		};
+		class bin_scripts_effects
+		{
+			file = "A3S_client\bin\scripts\effects";
+			class bleeding
+			{
+			};
+			class breakLegs
+			{
+			};
+			class changeHungerThirst
+			{
+			};
+			class fallUnconscious
+			{
+			};
+			class infectMe
+			{
+			};
+			class object_player_stats_updateTemperature
+			{
+			};
+			class Unconscious
+			{
+			};
+		};
+		class bin_scripts_eventhandler
+		{
+			file = "A3S_client\bin\scripts\eventhandler";
+			class displayLocation
+			{
+			};
+			class escMenu
+			{
+			};
+			class event_onFired
+			{
+			};
+			class event_onFiredNear
+			{
+			};
+			class event_onHandleDamage
+			{
+			};
+			class event_onHit
+			{
+			};
+			class event_onInventoryClosed
+			{
+			};
+			class event_onInventoryOpened
+			{
+			};
+			class event_onKilled
+			{
+			};
+			class event_onTake
+			{
+			};
+			class keyHandler_Down
+			{
+			};
+			class keyHandler_Up
+			{
+			};
+			class removeEventhandler
+			{
+			};
+			class Respawn
+			{
+			};
+			class system_eventhandler
+			{
+			};
+		};
+		class bin_scripts_functions
+		{
+			file = "A3S_client\bin\scripts\functions";
+			class addHoldAction
+			{
+			};
+			class addToFeed
+			{
+			};
+			class antiSideChat
+			{
+			};
+			class createFireEffect
+			{
+			};
+			class deathscreen
+			{
+			};
+			class gui_loadingScreen_updateText
+			{
+			};
+			class gui_loadingScreen_updateLoading
+			{
+			};
+			class helpMenu
+			{
+			};
+			class map_fixes
+			{
+			};
+			class noHead
+			{
+			};
+			class object_tree_chop
+			{
+			};
+			class openPlayerList
+			{
+			};
+			class AddBlurryEffect
+			{
+			};
+			class RemoveBlurryEffect
+			{
+			};
+			class overwriteMapDialog
+			{
+			};
+			class ReplaceChars
+			{
+			};
+			class setting
+			{
+			};
+			class setup_ui
+			{
+			};
+			class util_animation_getMatrixIndex
+			{
+			};
+			class util_gear_repackMagazines
+			{
+			};
+			class util_math_lerp
+			{
+			};
+			class util_model_getHeight
+			{
+			};
+			class util_model_getLookAt
+			{
+			};
+			class util_model_isInteraction
+			{
+			};
+			class util_model_isLookingAt
+			{
+			};
+			class util_model_isNearby
+			{
+			};
+			class util_world_isFireInRange
+			{
+			};
+		};
+		class bin_scripts_interaction
+		{
+			file = "A3S_client\bin\scripts\interaction";
+			class CheckInteractionMenu
+			{
+			};
+		};
+		class bin_scripts_interaction_ointeraction
+		{
+			file = "A3S_client\bin\scripts\interaction\ointeraction";
+			class pickup_GasCooker
+			{
+			};
+		};
+		class bin_scripts_interaction_pinteraction
+		{
+			file = "A3S_client\bin\scripts\interaction\pinteraction";
+			class interaction_Bandage
+			{
+			};
+			class interaction_BloodBag
+			{
+			};
+			class interaction_Burlap
+			{
+			};
+			class interaction_EmptyBloodBag
+			{
+			};
+			class interaction_Epipen
+			{
+			};
+			class interaction_Morphine
+			{
+			};
+			class interaction_ZipTie
+			{
+			};
+			class openInteractionMenu
+			{
+			};
+			class recombining
+			{
+			};
+			class Surrender
+			{
+			};
+			class ZipTie
+			{
+			};
+		};
+		class bin_scripts_interaction_vinteraction
+		{
+			file = "A3S_client\bin\scripts\interaction\vinteraction";
+			class getPartName
+			{
+			};
+			class openVehicleInteraction
+			{
+			};
+			class pushObject
+			{
+			};
+			class repairVehicle
+			{
+			};
+			class upgrage_vehicle
+			{
+			};
+		};
+		class bin_scripts_inventory
+		{
+			file = "A3S_client\bin\scripts\inventory";
+			class gui_inventory_event_onItemDoubleClick
+			{
+			};
+			class gui_inventory_event_onItemOneClick
+			{
+			};
+			class gui_inventory_event_onLoad
+			{
+			};
+			class gui_inventory_event_onSlotDoubleClick
+			{
+			};
+			class gui_inventory_event_onUnLoad
+			{
+			};
+			class object_item_construct
+			{
+			};
+			class object_item_consume
+			{
+			};
+			class object_item_craft
+			{
+			};
+			class object_item_use
+			{
+			};
+			class RefreshInventoryHud
+			{
+			};
+			class util_gear_getConfigEntryByDisplayName
+			{
+			};
+			class util_gear_getConfigNameByClassName
+			{
+			};
+			class util_gear_getMass
+			{
+			};
+			class util_gear_getMaximumLoad
+			{
+			};
+			class util_inventory_canExchangeItems
+			{
+			};
+			class util_item_getArmor
+			{
+			};
+			class util_item_getMainStats
+			{
+			};
+		};
+		class bin_scripts_items
+		{
+			file = "A3S_client\bin\scripts\items";
+			class items_Bandage
+			{
+			};
+			class items_CampfireKit
+			{
+			};
+			class items_Chemlight
+			{
+			};
+			class items_extinguishFire
+			{
+			};
+			class items_GasCooker
+			{
+			};
+			class items_gutAnimal
+			{
+			};
+			class items_hatchet
+			{
+			};
+			class items_heatpack
+			{
+			};
+			class items_JerryCan
+			{
+			};
+			class items_Matches
+			{
+			};
+			class items_Morphine
+			{
+			};
+			class items_Shovel
+			{
+			};
+		};
+		class bin_scripts_log
+		{
+			file = "A3S_client\bin\scripts\log";
+			class log
+			{
+			};
+		};
+		class bin_scripts_spawnmenu
+		{
+			file = "A3S_client\bin\scripts\spawnmenu";
+			class CloseSpawnMenu
+			{
+			};
+			class CustomizationChange
+			{
+			};
+			class CustomizationMenu
+			{
+			};
+			class CustomizationMenuClose
+			{
+			};
+			class PrepareSpawnMenu
+			{
+			};
+			class OpenSpawnMenu
+			{
+			};
+			class showCharacter
+			{
+			};
+		};
+		class bin_scripts_system
+		{
+			file = "A3S_client\bin\scripts\system";
+			class lootSpawnerClient
+			{
+			};
+			class system_draw3D
+			{
+			};
+			class system_objectCleaner
+			{
+			};
+			class system_objectQUpdate
+			{
+			};
+			class system_objectSpawner
+			{
+			};
+			class system_objectUpdater
+			{
+			};
+			class system_player_stats_update_thread
+			{
+			};
+			class system_radiation_thread
+			{
+			};
+		};
+		class bin_scripts_visualeffects
+		{
+			file = "A3S_client\bin\scripts\visualeffects";
+			class gui_burlap_toggle
+			{
+			};
+			class gui_gasMask_toggle
+			{
+			};
+			class hitEffect
+			{
+			};
+		};
+		class bin_scripts_zombie
+		{
+			file = "A3S_client\bin\scripts\zombie";
+			class createZombieLoot
+			{
+			};
+			class processHordeData
+			{
+			};
+			class processZombieData
+			{
+			};
+			class processCrashSide
+			{
+			};
+			class zombieHitCheck
+			{
+			};
+			class zombieSpawnerClient
+			{
+			};
+		};
+	};

@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_CustomizationMenuClose'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_CustomizationMenuClose';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\spawnmenu\fn_CustomizationMenuClose.sqf [A3SClient_fnc_CustomizationMenuClose]"
+
+scriptName"fn_CustomizationMenuClose";INTRO_CAM camSetTarget(player modelToWorld[0.5,0,1.4]);
+INTRO_CAM camSetPos(player modelToWorld[0,2.2,1.2]);INTRO_CAM camSetFOV .60;INTRO_CAM camSetFocus[-1,1];INTRO_CAM camCommit 1;
+}

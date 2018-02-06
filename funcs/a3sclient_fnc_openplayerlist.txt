@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_openPlayerList'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_openPlayerList';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\functions\fn_openPlayerList.sqf [A3SClient_fnc_openPlayerList]"
+
+scriptName"fn_openPlayerList";disableSerialization;if(!hasInterface) exitWith{};if((findDisplay 1820) isEqualTo displayNull) then{createDialog"playerList";};_listbox=(findDisplay 1820) displayCtrl 1;_serverName=(findDisplay 1820) displayCtrl 2;lbClear _listbox;
+_serverName ctrlSetText serverName;{if(_x==player) then{_listbox lbAdd format["%1 (Zombies killed: %2 || Time survived: %3)",profileNameSteam,a3s_ZombiesKilled,([a3s_TimeSurvived,"HH:MM"]call BIS_FNC_secondsToString)];}else{_listbox lbAdd format["%1",_x getVariable["profileNameSteam","Id not found"]];};}forEach AllPlayers;
+}

@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_event_onInventoryClosed'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_event_onInventoryClosed';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\eventhandler\fn_event_onInventoryClosed.sqf [A3SClient_fnc_event_onInventoryClosed]"
+
+scriptName"fn_event_onInventoryClosed";L_MOUNT_container="";L_MOUNT_inventory=false;if(typeOf(_this select 1) isEqualTo"DayZero_Object_PersistentWeaponHolder") then{_list=nearestObjects[player,a3s_sv_buildings_types,10];
+_obj=_list select 0;if(!isNil{_obj getVariable"BuildingID"}) then{if(diag_tickTime-a3s_sv_buildings_lastTimeManuallySaved>5) then{[_obj]remoteExecCall["A3SClient_fnc_saveBuilding",2];a3s_sv_buildings_lastTimeManuallySaved=diag_tickTime;};};};call A3SClient_fnc_RemoveBlurryEffect;true
+}

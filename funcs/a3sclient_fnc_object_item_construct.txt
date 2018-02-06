@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_object_item_construct'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_object_item_construct';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\inventory\fn_object_item_construct.sqf [A3SClient_fnc_object_item_construct]"
+
+scriptName"fn_object_item_construct";private["_itemClassName","_minimumDistanceToTraderZones","_minimumDistanceToSpawnZones","_maximumNumberOfTerritoriesPerPlayer","_numberOfTerritories"];if(a3s_inAction) exitWith{["<t color='#ffff00'>Can not make two things at the same time</t>"]call A3SClient_fnc_addToFeed;};_itemClassName=_this select 0;if!(_itemClassName in(magazines player)) exitWith{closedialog 0;
+false;};if(isClass(configFile>>"CfgMagazines">>_itemClassName>>"Interactions">>"Constructing")) then{if(findDisplay 602!=displayNull) then {(findDisplay 602) closeDisplay 2;};try {if(a3s_inCombat) then {throw"You cannot build during a combat";};if!((vehicle player) isEqualTo player) then {throw"You cannot build while in a vehicle";};[_itemClassName]call A3SClient_fnc_construction_beginNewObject;}catch {[format["<t color='#ffff00'>%1</t>",_exception]]call A3SClient_fnc_addToFeed;};};true
+}

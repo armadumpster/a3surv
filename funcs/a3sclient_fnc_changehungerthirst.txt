@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_changeHungerThirst'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_changeHungerThirst';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\effects\fn_changeHungerThirst.sqf [A3SClient_fnc_changeHungerThirst]"
+
+scriptName"fn_changeHungerThirst";_hungerChange=param[0,0,[0]];_thirstChange=param[1,0,[0]];if((a3s_hunger+_hungerChange)<a3s_hunger) then{if((a3s_hunger+_hungerChange)<0) then{_hungerChange=0;a3s_hunger=0;};if(a3s_hunger<95) then{_msg="";_color="";{if(((a3s_hunger+_hungerChange)<=(_x select 0)) AND((a3s_hunger)>=(_x select 0))) then{_msg=_x select 1;_color=_x select 2;};}forEach a3s_messages_hunger;if(_msg!="") then{["<t color='"+_color+"'>"+_msg+"</t>"]call A3SClient_fnc_addToFeed;};};}else{if((a3s_hunger+_hungerChange)>100) then{_hungerChange=0;a3s_hunger=100;};if(a3s_hunger<95) then{_msg="";_color="";{if(((a3s_hunger+_hungerChange)>=(_x select 0)) AND((a3s_hunger)<=(_x select 0))) then{_msg=_x select 1;_color=_x select 2;};}forEach a3s_messages_hunger;if(_msg!="") then{["<t color='"+_color+"'>"+_msg+"</t>"]call A3SClient_fnc_addToFeed;
+};};};a3s_hunger=a3s_hunger+_hungerChange;if((a3s_thirst+_thirstChange)<a3s_thirst) then{if((a3s_thirst+_thirstChange)<0) then{_thirstChange=0;a3s_thirst=0;};if(a3s_thirst<95) then{_msg="";_color="";{if(((a3s_thirst+_thirstChange)<=(_x select 0)) AND((a3s_thirst)>=(_x select 0))) then{_msg=_x select 1;_color=_x select 2;};}forEach a3s_messages_thirst;if(_msg!="") then{["<t color='"+_color+"'>"+_msg+"</t>"]call A3SClient_fnc_addToFeed;};};}else{if((a3s_thirst+_thirstChange)>100) then{_thirstChange=0;a3s_thirst=100;};if(a3s_thirst<95) then{_msg="";_color="";{if(((a3s_thirst+_thirstChange)<=(_x select 0)) AND((a3s_thirst)>=(_x select 0))) then{_msg=_x select 1;_color=_x select 2;};}forEach a3s_messages_thirst;if(_msg!="") then{["<t color='"+_color+"'>"+_msg+"</t>"]call A3SClient_fnc_addToFeed;};};};a3s_thirst=a3s_thirst+_thirstChange;
+}

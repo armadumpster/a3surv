@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_Construction_canBuildHere'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_Construction_canBuildHere';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\basebuilding\fn_Construction_canBuildHere.sqf [A3SClient_fnc_Construction_canBuildHere]"
+
+scriptName"fn_Construction_canBuildHere";private["_constructionConfigName","_position","_playerUID","_result","_requiresTerritory","_canBePlacedOnRoad","_allowDuplicateSnap","_minimumDistanceToTraderZones","_minimumDistanceToSpawnZones","_minimumDistanceToOtherTerritories","_maximumTerritoryRadius","_positionObject","_nearestFlags","_radius","_buildRights","_territoryLevelConfigs","_territoryLevelConfig","_numberOfConstructionsAllowed"];_constructionConfigName=_this select 0;_position=_this select 1;_playerUID=_this select 2;_result=0;_canBePlacedOnRoad=getNumber(configFile>>"CfgConstruction">>_constructionConfigName>>"canBePlacedOnRoad") isEqualTo 1;
+_allowDuplicateSnap=getNumber(configFile>>"CfgConstruction">>_constructionConfigName>>"allowDuplicateSnap") isEqualTo 1;_canBePlacedUnderTheGround=getNumber(configFile>>"CfgConstruction">>_constructionConfigName>>"canBePlacedUnderTheGround") isEqualTo 1;try{if!(_canBePlacedOnRoad) then {if(isOnRoad[_position select 0,_position select 1,0]) then {throw 1;};};if!(_allowDuplicateSnap) then {{throw 2;}forEach(_position nearObjects["A3S_Construction_Static",2]);};if!(_canBePlacedUnderTheGround) then {if(_position select 2<-0.05) then {throw 3;};};throw 0;}catch{_result=_exception;};_result
+}

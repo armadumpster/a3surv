@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_util_item_getCategoryCraftingRecipes'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_util_item_getCategoryCraftingRecipes';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\crafting\fn_util_item_getCategoryCraftingRecipes.sqf [A3SClient_fnc_util_item_getCategoryCraftingRecipes]"
+
+scriptName"fn_util_item_getCategoryCraftingRecipes";private["_forItemClassName","_foundItems","_availableRecipes","_recipeConfig","_recipeClassName","_recipeName","_pictureItem","_picture","_components"];_forItemClassName=_this;_foundItems=[];_availableRecipes=(missionConfigFile>>"CfgCraftingRecipes") call Bis_fnc_getCfgSubClasses;{_recipeConfig=(missionConfigFile>>"CfgCraftingRecipes">>_x);_recipeClassName=_x;_recipeName=getText(_recipeConfig>>"name");_category=getText(_recipeConfig>>"category");
+_pictureItem=getText(_recipeConfig>>"pictureItem");if(_pictureItem isEqualTo"") then{_picture=getText(_recipeConfig>>"blueprint");}else{_configNamePictureItem=_pictureItem call A3SClient_fnc_util_gear_getConfigNameByClassName;_picture=getText(configFile>>_configNamePictureItem>>_pictureItem>>"picture");};_components=getArray(_recipeConfig>>"components");{if(_category isEqualTo _forItemClassName) exitWith {_foundItems pushBack[_recipeClassName,_recipeName,_picture];};}forEach _components;}forEach _availableRecipes;_foundItems
+}

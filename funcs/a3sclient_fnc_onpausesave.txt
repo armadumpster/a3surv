@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_onPauseSave'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_onPauseSave';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\database\fn_onPauseSave.sqf [A3SClient_fnc_onPauseSave]"
+
+scriptName"fn_onPauseSave";[]spawn{with missionNamespace do{if(isNil"a3s_lastManualSave") then{a3s_lastManualSave=-999;};if(diag_tickTime-a3s_lastManualSave>250) then{a3s_lastManualSave=diag_tickTime;[3]spawn A3SClient_fnc_savePlayerDataPatrial;};};};[]spawn{with missionNamespace do{disableSerialization;_SaveButton=(findDisplay 49) displayCtrl(103);_TutorialHintsButton=(findDisplay 49) displayCtrl(122);_respawnButton=(findDisplay 49) displayCtrl(1010);_respawnButton ctrlEnable false;_SaveButton ctrlShow false;_TutorialHintsButton ctrlShow false;if(!isServer AND a3s_Alive) exitWith{_abortButton=(findDisplay 49) displayCtrl(104);_abortButton ctrlEnable false;a3s_AltPressed=false;(findDisplay 49) displayAddEventHandler["KeyDown",{_ctrl=_this select 0;
+_code=_this select 1;_shift=_this select 2;_ctrlKey=_this select 3;_alt=_this select 4;if(a3s_inCombat) then{if(_code isEqualTo 56) then{if(!a3s_AltPressed&&!a3s_lastAltSave) then{[6]spawn A3SClient_fnc_savePlayerDataPatrial;a3s_lastAltSave=true;a3s_AltPressed=true;};true };};if(_code isEqualTo 62 AND _alt) then{true };}];_toWait=a3s_antiCombatLogTimer;_InCombat=a3s_inCombat;_surrender=a3s_surrender;if(!_InCombat&&!_surrender) then{while{_toWait>0}do{_abortButton ctrlSetText format["ABORT AVAILABLE IN %1",_toWait];_respawnButton ctrlSetText format["RESPAWN AVAILABLE IN %1",_toWait];uisleep 1;_toWait=_toWait-1;};_respawnButton ctrlEnable true;_respawnButton ctrlSetText"RESPAWN";_abortButton buttonSetAction"[3] spawn A3SClient_fnc_savePlayerDataPatrial;diag_log ""A3S onPauseSave"";";_abortButton ctrlSetText"ABORT";_abortButton ctrlEnable true;};};};};
+}

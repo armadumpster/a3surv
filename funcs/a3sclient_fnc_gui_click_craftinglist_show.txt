@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_gui_click_craftinglist_show'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_gui_click_craftinglist_show';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\crafting\fn_gui_click_craftinglist_show.sqf [A3SClient_fnc_gui_click_craftinglist_show]"
+
+scriptName"fn_gui_click_craftinglist_show";_craftingRecipes=_this;_dialog=uiNameSpace getVariable["RscCraftItemDialog",displayNull];_craftingRecipesListBox=(_dialog displayCtrl 1400);if!(_craftingRecipes isEqualTo[]) then{_craftingRecipesListBox ctrlShow true;lbClear _craftingRecipesListBox;{_recipeClassName=_x select 0;
+_recipeName=_x select 1;_recipePicture=_x select 2;_listItemIndex=_craftingRecipesListBox lbAdd _recipeName;_craftingRecipesListBox lbSetPicture[_listItemIndex,_recipePicture];_craftingRecipesListBox lbSetData[_listItemIndex,_recipeClassName];}forEach _craftingRecipes;_craftingRecipesListBox ctrlShow true;}else{_craftingRecipesListBox ctrlShow false;};true
+}

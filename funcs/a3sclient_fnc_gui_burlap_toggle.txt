@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_gui_burlap_toggle'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_gui_burlap_toggle';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\visualeffects\fn_gui_burlap_toggle.sqf [A3SClient_fnc_gui_burlap_toggle]"
+
+scriptName"fn_gui_burlap_toggle";if(_this) then{a3s_ClientBurlapkVisible=true;
+7000 cutRsc["blackbackground","BLACK",999];}else{a3s_ClientBurlapkVisible=false;7000 cutRsc["blackbackgroundfadein","PLAIN"];};
+}

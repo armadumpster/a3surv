@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_event_onHandleDamage'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_event_onHandleDamage';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\eventhandler\fn_event_onHandleDamage.sqf [A3SClient_fnc_event_onHandleDamage]"
+
+scriptName"fn_event_onHandleDamage";_source=_this select 3;if(isPlayer _source) then{_unit=_this select 0;_selection=_this select 1;_passedDamage=_this select 2;_source=_this select 3;_projectile=_this select 4;_oldDamage=0;[_selection,_passedDamage,_projectile]call A3SClient_fnc_noHead;if(_selection isEqualTo"legs") then{private["_r"];_r=random 100;if(_r<20) then{[]spawn A3SClient_fnc_breakLegs;
+};};switch(_selection)do{case("head"):{_oldDamage=_unit getHitPointDamage"HitHead";};case("body"):{_oldDamage=_unit getHitPointDamage"HitBody";};case("hands"):{_oldDamage=_unit getHitPointDamage"HitHands";};case("legs"):{_oldDamage=_unit getHitPointDamage"HitLegs";};case(""):{_oldDamage=damage _unit;};default{};};diag_log format["PassedDamage: %1",_passedDamage];_return=_oldDamage+((_passedDamage-_oldDamage)/10);diag_log format["Return: %1",_return];_return};
+}

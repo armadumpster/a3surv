@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_processCrashSide'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_processCrashSide';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\zombie\fn_processCrashSide.sqf [A3SClient_fnc_processCrashSide]"
+
+scriptName"fn_processCrashSide";_CrashSide=_this select 0;if(isNull _CrashSide) exitWith{};_position=getposATL _CrashSide;for"_i"from 1 to 4 do{uisleep 0.3;_type=a3s_sv_zombies_civilian select(floor random((count a3s_sv_zombies_civilian)-1));_ZombiePosition=[(_position select 0)-1.5-(random 14),(_position select 1)-4-(random 14),0];_zombie=createAgent[_type,_ZombiePosition,[],0,"NONE"];_zombie setVariable["zombieOwner",player,true];_zombie setVariable['isZombie',true,true];_zombie setAnimSpeedCoef 0.9;_zombie addEventHandler["Killed",{(_this select 0) setVariable["timeSinceDeath",serverTime,true];removeVest(_this select 0);
+removeBackpack(_this select 0);}];_zombie disableAI"FSM";_zombie setBehaviour"CARELESS";};for"_i"from 1 to 4 do{uisleep 0.3;_type=a3s_sv_zombies_civilian select(floor random((count a3s_sv_zombies_civilian)-1));_ZombiePosition=[(_position select 0)+1.5+(random 12),(_position select 1)+4+(random 14),0];_zombie=createAgent[_type,_ZombiePosition,[],0,"NONE"];_zombie setVariable["zombieOwner",player,true];_zombie setVariable['isZombie',true,true];_zombie setAnimSpeedCoef 0.9;_zombie addEventHandler["Killed",{(_this select 0) setVariable["timeSinceDeath",serverTime,true];removeVest(_this select 0);removeBackpack(_this select 0);}];_zombie disableAI"FSM";_zombie setBehaviour"CARELESS";};
+}

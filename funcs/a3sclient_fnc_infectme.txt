@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_infectMe'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_infectMe';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\effects\fn_infectMe.sqf [A3SClient_fnc_infectMe]"
+
+scriptName"fn_infectMe";_chance=param[0,15,[0]];if(_chance<0 OR _chance>100) exitWith{};
+_r=random 100;if(_r<_chance) then{a3s_infected=true;};
+}

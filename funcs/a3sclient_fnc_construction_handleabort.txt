@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_Construction_handleAbort'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_Construction_handleAbort';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\basebuilding\fn_Construction_handleAbort.sqf [A3SClient_fnc_Construction_handleAbort]"
+
+scriptName"fn_Construction_handleAbort";switch(a3s_ConstructionResult) do{case 1:{if(a3s_ConstructionProcess isEqualTo 1) then {player removeItem a3s_ConstructionKitClassName;[format["<t color='#A3FB26'>You have build a %1</t>",a3s_ConstructionObjectDisplayName]]call A3SClient_fnc_addToFeed;};if(a3s_ConstructionProcess isEqualTo 2) then {[format["<t color='#A3FB26'>You moved %1</t>",a3s_ConstructionObjectDisplayName]]call A3SClient_fnc_addToFeed;};a3s_ConstructionObject call A3SClient_fnc_Construction_initBuilding;};case 3:{if(a3s_ConstructionProcess isEqualTo 2) then {a3s_ConstructionObject call A3SClient_fnc_Construction_initBuilding;
+}else {deleteVehicle a3s_ConstructionObject;};["<t color='#ffff00'>Do not move more than 20 meters</t>"]call A3SClient_fnc_addToFeed;};case 2:{if(a3s_ConstructionProcess isEqualTo 2) then {a3s_ConstructionObject call A3SClient_fnc_Construction_initBuilding;}else {deleteVehicle a3s_ConstructionObject;};if(a3s_inCombat) then {["<t color='#ffff00'>You cannot build during a combat</t>"]call A3SClient_fnc_addToFeed;}else {["<t color='#ffff00'>Construction aborted</t>"]call A3SClient_fnc_addToFeed;};};};a3s_ConstructionObject=objNull;a3s_IsInConstructionMode=false;a3s_ConstructionResult=0;a3s_ConstructionProcess=0;a3s_ConstructionLock=false;true
+}

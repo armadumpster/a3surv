@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_breakLegs'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_breakLegs';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\effects\fn_breakLegs.sqf [A3SClient_fnc_breakLegs]"
+
+scriptName"fn_breakLegs";if(player getVariable["brokenlegs",false]) exitWith{};_sound=["a3s_fracture_01","a3s_fracture_02"]call BIS_FNC_selectRandom;[player,_sound]remoteExecCall["say3D",-2];
+[player,"a3s_panic_02"]remoteExecCall["say3D",-2];player setVariable["brokenlegs",true,true];player setHitPointDamage["HitLegs",1];["<t color='#D90C01'>I think one of my legs is broken</t>"]call A3SClient_fnc_addToFeed;a3s_brokenLegs=true;
+}

@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_gui_itemDetails_event_onTabButtonClicked'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_gui_itemDetails_event_onTabButtonClicked';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\crafting\fn_gui_itemDetails_event_onTabButtonClicked.sqf [A3SClient_fnc_gui_itemDetails_event_onTabButtonClicked]"
+
+scriptName"fn_gui_itemDetails_event_onTabButtonClicked";private["_tabName","_display","_tabDetails","_tabRecipes"];disableSerialization;_tabName=_this;_display=findDisplay 24004;_tabDetails=_display displayCtrl 5003;
+_tabRecipes=_display displayCtrl 5004;switch(_tabName) do{case"RECIPES":{_tabDetails ctrlShow false;_tabRecipes ctrlShow true;};case"DETAILS":{_tabDetails ctrlShow true;_tabRecipes ctrlShow false;};};_tabDetails ctrlCommit 1;_tabRecipes ctrlCommit 1;true
+}

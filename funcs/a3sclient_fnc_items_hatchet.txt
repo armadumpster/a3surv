@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_items_hatchet'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_items_hatchet';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\items\fn_items_hatchet.sqf [A3SClient_fnc_items_hatchet]"
+
+scriptName"fn_items_hatchet";[]spawn{player say3D"a3s_chop_01";player playMoveNow"AinvPknlMstpSnonWnonDnon_medic_1";a3s_inAction=true;uisleep 6;a3s_inAction=false;player addItem"A3S_Item_Woodpile";if(floor(random 10)<3) then{player addItem"A3S_Item_Leaves";
+["<t color='#A3FB26'>I have collected some wood and gatherd some leaves</t>"]call A3SClient_fnc_addToFeed;}else{["<t color='#A3FB26'>I have collected some wood</t>"]call A3SClient_fnc_addToFeed;};};
+}

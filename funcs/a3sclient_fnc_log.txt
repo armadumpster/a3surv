@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_log'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_log';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\log\fn_log.sqf [A3SClient_fnc_log]"
+
+scriptName"fn_log";_toLog=param[0,"",[""]];if(count _toLog<1) exitWith{};
+diag_log format["*** A3S LOG *** : %1 : %2",diag_tickTime,_toLog];true
+}

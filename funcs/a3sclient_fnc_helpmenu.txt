@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_helpMenu'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_helpMenu';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\functions\fn_helpMenu.sqf [A3SClient_fnc_helpMenu]"
+
+scriptName"fn_helpMenu";disableSerialization;_data=param[0,[],[[]]];if(dialog) then{_contentText="";_selectedTopic=(_data select 0) lbText(_data select 1);{if(_selectedTopic isEqualTo(_x select 0)) then{_contentText=_x select 1;};}forEach a3s_helpTextContent;
+((findDisplay 1030) displayCtrl 2) ctrlSetStructuredText parseText format["<t font='CrayonHand'>%1</t>",_contentText];}else{createDialog"helpMenu";{((findDisplay 1030) displayCtrl 1) lbAdd(_x select 0);}forEach a3s_helpTextContent;((findDisplay 1030) displayCtrl 1) lbSetCurSel 0;};
+}

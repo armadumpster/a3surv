@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_system_objectUpdater'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_system_objectUpdater';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\system\fn_system_objectUpdater.sqf [A3SClient_fnc_system_objectUpdater]"
+
+scriptName"fn_system_objectUpdater";_time=10;_pos_player=getPos player;_up_range=300;while{a3s_Alive}do{private["_moved"];_moved=player distance _pos_player;if(_moved>_up_range) then{{_pos_player=getPos player;if((_pos_player distance(getMarkerPos(_x select 0))<1000)) then{if(count(_x select 2) isEqualTo 0) then{_x call A3SClient_fnc_system_objectSpawner;
+};}else{if(count(_x select 2)>0) then{(_x select 2) call A3SClient_fnc_system_objectCleaner;};};}foreach allObjects;};uisleep _time;};
+}

@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_zombieHitCheck'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_zombieHitCheck';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\zombie\fn_zombieHitCheck.sqf [A3SClient_fnc_zombieHitCheck]"
+
+scriptName"fn_zombieHitCheck";_zombie=param[0,objNull,[objNull]];if(isNull _zombie) exitWith{};if((_zombie distance player)>(Ryanzombiesattackdistance+0.1)) exitWith{};if(lineIntersects[(eyePos _zombie),(eyePos player),player,_zombie]) exitWith{};if(!(player getVariable["bleeding",false]) AND((floor random 100)<12)) then{player setVariable["bleeding",true,true];addCamShake[4,9999,0.5];["<t color='#D90C01'>I am bleeding</t>"]spawn A3SClient_fnc_addToFeed;[]spawn{a3s_blood="#particlesource"createVehicleLocal getpos player;
+a3s_blood setParticleParams[["\A3\data_f\ParticleEffects\Universal\smoke.p3d",1,0,1],"","Billboard",1,0,[0,0,1.1],[0,0,0],0,10000,1,0.01,[0.1,0.05],[[0.01,0,0,0.6],[0.05,0,0,0.3],[0.01,0,0.01,0.5]],[0],1,0,"","",player];a3s_blood setParticleRandom[3,[0,0,0],[0,0,0.1],0,0.5,[0,0,0,0.5],1,0];a3s_blood setParticleCircle[0,[0,0,0]];a3s_blood setDropInterval 0.05;;};};_zombie setdir([_zombie,player]call BIS_fnc_dirTo);player setdamage(damage player+Ryanzombiesdamage);[]spawn A3SClient_fnc_hitEffect;if(!(player getVariable["brokenlegs",false]) AND((random 100)<0.6)) then{[]spawn A3SClient_fnc_breakLegs;};
+}

@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_initMusic'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_initMusic';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\fn_initMusic.sqf [A3SClient_fnc_initMusic]"
+
+scriptName"fn_initMusic";private["_soundPrefix"];_soundPrefix="a3s_suspense_";playMusic"";while{a3s_Alive}do{private["_soundAmount","_useSound","_length","_pause"];
+_soundAmount=floor(random 36);_useSound=format["%1%2",_soundPrefix,_soundAmount];_length=getNumber(configFile>>"cfgMusic">>_useSound>>"Duration");_pause=((random 5)+2)+_length;playMusic _useSound;uisleep _pause;};
+}

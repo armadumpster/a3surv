@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_lootSpawnerClient'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_lootSpawnerClient';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\system\fn_lootSpawnerClient.sqf [A3SClient_fnc_lootSpawnerClient]"
+
+scriptName"fn_lootSpawnerClient";if!((vehicle player) isEqualTo player) exitWith{false};private["_buildings","_LootArray","_buildingNow","_buildingConfig","_lootPositions","_lastTimeSentToServer"];_buildings=nearestObjects[player,["House","Mash","Land_Stan_east_ep1"],80];_LootArray=[];{_buildingNow=_x;try {if(isNUll _buildingNow) exitWith{};_buildingConfig=missionconfigFile>>"CfgBuildings">>typeOf _buildingNow;_lootPositions=getArray(_buildingConfig>>"positions");
+if(count _lootPositions isEqualTo 0) throw false;_lastTimeSentToServer=_buildingNow getVariable["a3s_timeSinceLastLootSpawnClient",-99999];if((time-_lastTimeSentToServer)<600) throw false;_LootArray pushBack(netId _buildingNow);_buildingNow setVariable["a3s_timeSinceLastLootSpawnClient",Time];}catch {};}count _buildings;if((count _LootArray)>0) then{_north=false;if(player distance2D(getMarkerPos"a3s_north")<5500) then{_north=true;};[_LootArray,_north]remoteExecCall["A3SServer_fnc_RequestToSpawnLoot",2];};
+}

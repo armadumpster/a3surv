@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_savePlayerData'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_savePlayerData';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\basebuilding\fn_savePlayerData.sqf [A3SClient_fnc_savePlayerData]"
+
+scriptName"fn_savePlayerData";if(isNil"a3s_inGame") exitWith{};if(!(a3s_Alive)) exitWith{_finalPlayerData=[[[0,0,0],0,0],[],a3s_Alive,[100,100,0,0,37,0],0,0];[_finalPlayerData,player]remoteExecCall["A3SServer_fnc_savePlayerToDatabase",2];};_nil=call A3SClient_fnc_saveInventory;a3s_TimeSurvived=a3s_TimeSurvived+(diag_tickTime-a3s_ClientTimeUpdate);
+_finalPlayerData=[[getPosATL player,getDir player,damage player],a3s_Inventory,a3s_Alive,[a3s_hunger,a3s_thirst,if(a3s_brokenLegs) then{1}else{0},if(a3s_infected) then{1}else{0},a3s_Temperature,a3s_Wetness],round(a3s_TimeSurvived),a3s_ZombiesKilled,a3s_PlayersKilled,[a3s_local_skin]];[_finalPlayerData,player]remoteExecCall["A3SServer_fnc_savePlayerToDatabase",2];a3s_ClientTimeUpdate=diag_tickTime;
+}

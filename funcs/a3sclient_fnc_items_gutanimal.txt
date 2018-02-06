@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_items_gutAnimal'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_items_gutAnimal';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\items\fn_items_gutAnimal.sqf [A3SClient_fnc_items_gutAnimal]"
+
+scriptName"fn_items_gutAnimal";private["_unit"];_unit=player;_sounds=["a3s_gut_01","a3s_gut_01"];_animalArray=(nearestObjects[player,["Cock_random_F","Hen_random_F","Goat_random_F","Sheep_random_F","Rabbit_F"],2]);if(_animalArray isEqualTo[]) exitWith{};_animal=selectrandom _animalArray;a3s_inAction=true;if(currentWeapon _unit!="") then{["<t color='#ffff00'>I will put my weapon back</t>"]call A3SClient_fnc_addToFeed;_unit action["switchWeapon",_unit,_unit,100];uisleep 3;};[_unit,(selectRandom(_sounds))]remoteExecCall["say3D",-2];_progress=0.01;_exitWith=false;for"_i"from 0 to 1 step 0 do{if(animationState _unit!="AinvPknlMstpSnonWnonDnon_medic_1") then{_unit playMoveNow"AinvPknlMstpSnonWnonDnon_medic_1";
+};uisleep 1.4;_progress=_progress+0.1;if(!a3s_Alive) exitWith{_exitWith=true;};if(_unit!=vehicle _unit) exitWith{_exitWith=true;};if(_progress>=1) exitWith{};};a3s_inAction=false;_unit playActionNow"stop";if(_exitWith) exitWith{};if(isNull _animal) exitWith{};deleteVehicle _animal;_wh=createVehicle["groundWeaponHolder",[0,0,0],[],0,"CAN_COLLIDE"];_wh setPosATL(getPosATL player);_wh addItemCargoGlobal["A3S_Item_Meat_Raw",2+(round random 1)];_wh addItemCargoGlobal["A3S_Item_Leather",(round random 2)];["<t color='#A3FB26'>There is some meat on the ground</t>"]call A3SClient_fnc_addToFeed;
+}

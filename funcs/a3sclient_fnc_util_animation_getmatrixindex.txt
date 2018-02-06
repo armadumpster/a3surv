@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_util_animation_getMatrixIndex'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_util_animation_getMatrixIndex';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\functions\fn_util_animation_getMatrixIndex.sqf [A3SClient_fnc_util_animation_getMatrixIndex]"
+
+scriptName"fn_util_animation_getMatrixIndex";private["_currentWeapon","_stanceIndex","_weaponIndex","_map"];_currentWeapon=currentWeapon player;_stanceIndex=0;_weaponIndex=0;_map=[[0,1,2,3,4 ],[5,6,7,8,9 ],[10,11,12,13,14 ]];switch(stance player) do{case"CROUCH":{_stanceIndex=1;};case"PRONE":{_stanceIndex=2;};default {_stanceIndex=0;};};switch(true) do{case(_currentWeapon isEqualTo""):{_weaponIndex=0;
+};case((_currentWeapon isEqualTo(primaryWeapon player))&&!((primaryWeapon player) isEqualTo"")):{_weaponIndex=1;};case((_currentWeapon isEqualTo(handgunWeapon player))&&!((handgunWeapon player) isEqualTo"")):{_weaponIndex=2;};case((_currentWeapon isEqualTo(binocular player))&&!((binocular player) isEqualTo"")):{_weaponIndex=4;};default {_weaponIndex=3;};};(_map select _stanceIndex) select _weaponIndex
+}

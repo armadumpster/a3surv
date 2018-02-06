@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_event_onTake'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_event_onTake';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\eventhandler\fn_event_onTake.sqf [A3SClient_fnc_event_onTake]"
+
+scriptName"fn_event_onTake";if((vehicle player!=player)) exitWith{};private["_container","_item","_i","_compare"];_container=_this select 1;_item =_this select 2;if(_item isEqualTo"A3S_Melee_Axe"OR _item isEqualTo"A3S_Melee_Baseballbat") then{player addSecondaryWeaponItem"A3S_Magazine_Swing";};if(_item isEqualTo primaryWeapon player) exitWith{[]call L_fnc_mount_setItems};
+if((primaryWeapon player) isEqualTo"") exitWith{};for"_i"from 0 to 3 do{_compare=switch(_i) do {case 0:{L_mount_suppressor};case 1:{L_mount_accessoire};case 2:{L_mount_optics};case 3:{L_mount_bipod};};if(((primaryWeaponItems player) select _i)!=_compare) exitWith {_item=((primaryWeaponItems player) select _i);[_container,_item,_compare,_i]spawn L_fnc_mount_itemHandle;};};
+}

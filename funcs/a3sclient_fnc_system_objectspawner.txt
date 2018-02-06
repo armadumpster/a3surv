@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_system_objectSpawner'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_system_objectSpawner';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\system\fn_system_objectSpawner.sqf [A3SClient_fnc_system_objectSpawner]"
+
+scriptName"fn_system_objectSpawner";private["_objects","_SilentArray","_object"];_objects=_this select 1;_SilentArray=_this select 2;{_object=(_x select 0) createVehicleLocal[0,0,0];
+_object enableSimulation false;_object setPosATL(_x select 1);_object setVectorDirAndUp(_x select 2);_SilentArray pushback _object;}forEach _objects;
+}

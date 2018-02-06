@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_CheckInteractionMenu'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_CheckInteractionMenu';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\interaction\fn_CheckInteractionMenu.sqf [A3SClient_fnc_CheckInteractionMenu]"
+
+scriptName"fn_CheckInteractionMenu";private["_curTarget"];_curTarget=cursorTarget;if(typeof _curTarget isEqualto"GroundWeaponHolder") exitWith{};if((isPlayer _curTarget) AND(_curTarget isKindOf"Man") AND(player distance _curTarget<2)) exitWith{[_curTarget,0]call A3SClient_fnc_openInteractionMenu;};if((_curTarget isKindOf"LandVehicle"OR _curTarget isKindOf"Air"OR _curTarget isKindOf"Ship") AND(player distance _curTarget<6)) exitWith{[]call A3SClient_fnc_openVehicleInteraction;};if(typeOf _curTarget in["a3s_Basebuilding_FirePlace","a3s_Basebuilding_GasCooker"]AND(player distance _curTarget<1.5)) exitWith{[_curTarget,1]call A3SClient_fnc_openInteractionMenu;
+};_curObject=cursorObject;if(((typeOf _curObject) in a3s_refuelBuildings) AND(player distance _curObject<6)) exitWith{[_curObject,2]call A3SClient_fnc_openInteractionMenu;};if(typeOf _curTarget in a3s_bb_objectlist&&player distance _curTarget<4) exitWith{_ConstructionOwnerUID=_curTarget getVariable["ConstructionOwnerUID",""];if((getPlayerUid player) isEqualTo _ConstructionOwnerUID) then{[_curTarget,3]call A3SClient_fnc_openInteractionMenu;}else{["<t color='#ffff00'>Im not the owner of this object</t>"]call A3SClient_fnc_addToFeed;};};
+}

@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_postInit'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_postInit';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\fn_postInit.sqf [A3SClient_fnc_postInit]"
+
+scriptName"fn_postInit";
+[]spawn A3SClient_fnc_init_client;
+}

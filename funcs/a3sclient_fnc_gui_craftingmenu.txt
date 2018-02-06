@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_gui_CraftingMenu'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_gui_CraftingMenu';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\crafting\fn_gui_CraftingMenu.sqf [A3SClient_fnc_gui_CraftingMenu]"
+
+scriptName"fn_gui_CraftingMenu";createDialog"RscCraftItemDialog";_display=(findDisplay 24005);waitUntil{!isNull _display};_tool1=_display displayCtrl 5010;_tool2=_display displayCtrl 5011;_tool3=_display displayCtrl 5012;_tool4=_display displayCtrl 5013;_tool5=_display displayCtrl 5014;_nearby1=_display displayCtrl 5015;_nearby2=_display displayCtrl 5016;_nearby3=_display displayCtrl 5017;24005 call A3SClient_fnc_RefreshInventoryHud;_items=magazines player;_Directory="\A3S_assets\ui\Inventory\Crafting\Present_Tool\";if("A3S_Item_Hatchet"in _items) then{_tool1 ctrlSetText(_Directory+"Crafting_Axe_Color_Color.paa")};if("A3S_Item_CanOpener"in _items) then{_tool2 ctrlSetText(_Directory+"Crafting_CanOpner_Color.paa")};if("A3S_Item_Knife"in _items) then{_tool3 ctrlSetText(_Directory+"Crafting_Knife_Color.paa")};if("A3S_Item_Toolbox"in _items) then{_tool4 ctrlSetText(_Directory+"Crafting_Toolbox_Color.paa")};
+if("A3S_Item_CookingPot"in _items) then{_tool5 ctrlSetText(_Directory+"Crafting_Cookingpot_Color.paa")};if([ASLtoAGL(getPosASL player),10,["a3s_basebuilding_workbench.p3d"]]call A3SClient_fnc_util_model_isNearby) then{_nearby1 ctrlSetText(_Directory+"Crafting_CraftingTable_Color.paa")};{_interactionModelGroupConfig=missionConfigFile>>"CfgInteractionModels">>_x;_interactionModelGroupModels=getArray(_interactionModelGroupConfig>>"models");if([ASLtoAGL(getPosASL player),5,_interactionModelGroupModels]call A3SClient_fnc_util_model_isNearby) then {_nearby2 ctrlSetText(_Directory+"Crafting_Water_Color.paa") };}forEach["CleanWaterSource","WaterSource"];if(surfaceIsWater getPosATL player) then{_nearby2 ctrlSetText(_Directory+"Crafting_Water_Color.paa")};if([player,5]call A3SClient_fnc_util_world_isFireInRange) then{_nearby3 ctrlSetText(_Directory+"Crafting_Fire_Color.paa")};true
+}

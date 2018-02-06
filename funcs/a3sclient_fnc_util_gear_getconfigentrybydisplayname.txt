@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_util_gear_getConfigEntryByDisplayName'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_util_gear_getConfigEntryByDisplayName';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\inventory\fn_util_gear_getConfigEntryByDisplayName.sqf [A3SClient_fnc_util_gear_getConfigEntryByDisplayName]"
+
+scriptName"fn_util_gear_getConfigEntryByDisplayName";private["_displayName","_result","_configSearch"];_displayName=_this;_result=["",""];{_configSearch=("getText (_x >> 'displayName') isEqualTo _displayName") configClasses(configFile>>_x);
+if!(_configSearch isEqualTo[]) exitWith {_result=[configName(_configSearch select 0),_x];};}foreach["CfgMagazines","CfgWeapons","CfgVehicles","CfgAmmo"];_result
+}

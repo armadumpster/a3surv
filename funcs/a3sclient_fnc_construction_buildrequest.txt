@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_Construction_buildRequest'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_Construction_buildRequest';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\basebuilding\fn_Construction_buildRequest.sqf [A3SClient_fnc_Construction_buildRequest]"
+
+scriptName"fn_Construction_buildRequest";private["_parameters","_objectClassName","_objectPosition","_playerObject","_constructionConfig","_canBuildHereResult","_object"];_objectClassName=_this select 0;_objectPosition=_this select 1;try{if(isNull player) then {throw"Player object is null!";
+};_object=_objectClassName createVehicleLocal _objectPosition;_object setPosATL _objectPosition;_object setVariable["BIS_enableRandomization",false];_object enableSimulation false;_object call A3SClient_fnc_construction_buildResponse;}catch{[format["<t color='#ffff00'>%1</t>",_exception]]call A3SClient_fnc_addToFeed;};true
+}

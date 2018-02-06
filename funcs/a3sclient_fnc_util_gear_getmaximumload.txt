@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_util_gear_getMaximumLoad'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_util_gear_getMaximumLoad';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\inventory\fn_util_gear_getMaximumLoad.sqf [A3SClient_fnc_util_gear_getMaximumLoad]"
+
+scriptName"fn_util_gear_getMaximumLoad";private["_className","_maximumLoad","_containerClassName"];_className=_this;_maximumLoad=0;if(_className!="") then{_containerClassName=getText(configFile>>"CfgWeapons">>_className>>"ItemInfo">>"containerClass");
+if(_containerClassName isEqualTo"")then {_containerClassName=_className;};_maximumLoad=getNumber(configFile>>"CfgVehicles">>_containerClassName>>"maximumLoad");};_maximumLoad
+}

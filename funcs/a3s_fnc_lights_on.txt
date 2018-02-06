@@ -1,0 +1,30 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3S_fnc_Lights_on'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3S_fnc_Lights_on';
+	scriptName _fnc_scriptName;
+
+#line 1 "ca\structures_cfg\scripts\fn_Lights_on.sqf [A3S_fnc_Lights_on]"
+
+
+
+
+
+
+
+(_this select 0) animate [(_this select 1), 1];
+(_this select 0) animate [(_this select 2), 1];
+(_this select 0) animate [(_this select 3), 1];
+(_this select 0) animate [(_this select 4), 1];
+(_this select 0) animate [(_this select 5), 1];
+(_this select 0) animate [(_this select 6), 1];
+(_this select 0) animate [(_this select 7), 1];
+(_this select 0) animate [(_this select 8), 1];
+(_this select 0) animate [(_this select 9), 1];
+(_this select 0) animate [(_this select 10), 1];
+(_this select 0) animate [(_this select 11), 1];
+(_this select 0) animate [(_this select 12), 1];
+(_this select 0) animate [(_this select 13), 1];
+(_this select 0) animate [(_this select 14), 1];
+(_this select 0) animate [(_this select 15), 1];
+(_this select 0) animate [(_this select 16), 1];
+(_this select 0) say (_this select 17);}

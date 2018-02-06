@@ -1,0 +1,9 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_addHoldAction'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_addHoldAction';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\functions\fn_addHoldAction.sqf [A3SClient_fnc_addHoldAction]"
+params[["_object",player],["_label","Search"],["_type","search"],["_active","true"],["_completeCode",{hint 'Nothing found'}],["_arguments",[],[[]]],["_duration",2],["_remove","true"]];_idleIcon=switch(_type) do{case"crate":{"\A3S_assets\ui\Holdaction\holdAction_crate_ca.paa"};
+case"bag":{"\A3S_assets\ui\Holdaction\holdAction_bag_ca.paa"};default{"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_search_ca.paa"};};[_object,_label,_idleIcon,_idleIcon,_active,"true",{},{},_completeCode,{},_arguments,_duration,nil,_remove,false]call BIS_fnc_holdActionAdd;
+}

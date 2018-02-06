@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_interaction_Burlap'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_interaction_Burlap';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\interaction\pinteraction\fn_interaction_Burlap.sqf [A3SClient_fnc_interaction_Burlap]"
+
+scriptName"fn_interaction_Burlap";private["_target","_player"];_target=a3s_pInact_curTarget;_player=player;if(isNull _target) exitWith{};_headgear=headgear _target;if!(_headgear isEqualTo"A3S_Item_Burlap") then{_player playMoveNow"AinvPknlMstpSlayWrflDnon";if!(_headgear isEqualTo"") then{_holderPosition=getPosATL _target;_holder=createVehicle["GroundWeaponHolder",_holderPosition,[],0,"CAN_COLLIDE"];_holder setPosATL _holderPosition;_holder addMagazineCargoGlobal[_headgear,1];
+};_player removeItem"A3S_Item_Burlap";if(_headgear isEqualTo"") then{_target addHeadGear"A3S_Item_Burlap";}else{_wh=createVehicle["groundWeaponHolder",[0,0,0],[],0,"CAN_COLLIDE"];_wh setPosATL(getPosATL _target);_wh addItemCargoGlobal[_headgear,1];_target addHeadGear"A3S_Item_Burlap";};[format["<t color='#ffff00'>I put a burlap on %1</t>",name _target]]call A3SClient_fnc_addToFeed;}else{_player playMoveNow"AinvPknlMstpSlayWrflDnon";_player addItem"A3S_Item_Burlap";removeHeadGear _target;};
+}

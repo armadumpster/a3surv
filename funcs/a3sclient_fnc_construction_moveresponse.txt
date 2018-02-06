@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_Construction_MoveResponse'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_Construction_MoveResponse';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\basebuilding\fn_Construction_MoveResponse.sqf [A3SClient_fnc_Construction_MoveResponse]"
+
+scriptName"fn_Construction_MoveResponse";private["_response","_objectClass"];_response=_this select 0;_result=_this select 1;
+if(_response)then{_result call A3SClient_fnc_construction_MoveObject;}else{[format["<t color='#D90C01'>%1</t>",_result]]call A3SClient_fnc_addToFeed;};true
+}

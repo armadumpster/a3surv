@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_util_math_lerp'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_util_math_lerp';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\functions\fn_util_math_lerp.sqf [A3SClient_fnc_util_math_lerp]"
+
+scriptName"fn_util_math_lerp";private["_fromValue","_toValue","_step","_result"];
+_fromValue=_this select 0;_toValue=_this select 1;_step=_this select 2;_result=_fromValue+_step*(_toValue-_fromValue);_result
+}

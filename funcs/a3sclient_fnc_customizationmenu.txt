@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_CustomizationMenu'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_CustomizationMenu';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\spawnmenu\fn_CustomizationMenu.sqf [A3SClient_fnc_CustomizationMenu]"
+
+scriptName"fn_CustomizationMenu";disableSerialization;createDialog"customizeCharacter";_display=findDisplay 900;{_x ctrlSetFade 1;_x ctrlCommit 0;}forEach(allControls _display);INTRO_CAM camSetTarget[(player modelToWorld[-2.5,0,1.4]) select 0,(player modelToWorld[0.7,0,1]) select 1,1];
+INTRO_CAM camSetPos[(player modelToWorld[0,2.2,1.2]) select 0,(player modelToWorld[0,2.2,1.2]) select 1,1];INTRO_CAM camSetFOV .65;INTRO_CAM camSetFocus[-1,0.5];INTRO_CAM camCommit 1;{_x ctrlSetFade 0;_x ctrlCommit 2;_x ctrlShow true;}forEach(allControls _display);
+}

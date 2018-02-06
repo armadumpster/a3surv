@@ -1,0 +1,16 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3S_fnc_Hanger_Door_open'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3S_fnc_Hanger_Door_open';
+	scriptName _fnc_scriptName;
+
+#line 1 "ca\structures_cfg\scripts\fn_Hanger_Door_open.sqf [A3S_fnc_Hanger_Door_open]"
+(_this select 0) say (_this select 1);
+(_this select 0) animate [(_this select 2), 1]; sleep 1.5;
+(_this select 0) animate [(_this select 2), 0];
+(_this select 0) animate [(_this select 3), 0];
+(_this select 0) animate [(_this select 4), 0];
+(_this select 0) animate [(_this select 5), 0];
+(_this select 0) animate [(_this select 6), 0];
+(_this select 0) animate [(_this select 7), 0];
+(_this select 0) animate [(_this select 8), 0];
+}

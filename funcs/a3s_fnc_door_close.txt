@@ -1,0 +1,16 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3S_fnc_Door_close'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3S_fnc_Door_close';
+	scriptName _fnc_scriptName;
+
+#line 1 "ca\structures_cfg\scripts\fn_Door_close.sqf [A3S_fnc_Door_close]"
+
+
+
+
+
+
+
+(_this select 0) animate [(_this select 1), 0];
+(_this select 0) animate [(_this select 2), 0];
+(_this select 0) animate [(_this select 3), 0];}

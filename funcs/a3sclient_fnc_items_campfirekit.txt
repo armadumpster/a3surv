@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_items_CampfireKit'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_items_CampfireKit';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\items\fn_items_CampfireKit.sqf [A3SClient_fnc_items_CampfireKit]"
+
+scriptName"fn_items_CampfireKit";private["_unit"];_unit=player;_progress=0.01;_exitWith=false;player removeItem"A3S_Item_CampfireKit";a3s_inAction=true;if(currentWeapon _unit!="") then{["<t color='#ffff00'>I will put my weapon back</t>"]call A3SClient_fnc_addToFeed;_unit action["switchWeapon",_unit,_unit,100];uisleep 3;};for"_i"from 0 to 1 step 0 do{if(animationState _unit!="AinvPknlMstpSnonWnonDnon_medic_1") then{_unit playMoveNow"AinvPknlMstpSnonWnonDnon_medic_1";
+};uisleep 1.4;_progress=_progress+0.1;if(!a3s_Alive) exitWith{_exitWith=true;};if(_unit!=vehicle _unit) exitWith{_exitWith=true;};if(_progress>=1) exitWith{};};a3s_inAction=false;_unit playActionNow"stop";if(_exitWith) exitWith{_unit addItem"A3S_Item_Jerrycan_Empty";};_fireplace="a3s_Basebuilding_FirePlace"createVehicle[0,0,0];_fireplace setPosATL getPosATL _unit;_unit reveal _fireplace;["<t color='#A3FB26'>I have created a campfire</t>"]call A3SClient_fnc_addToFeed;
+}

@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_CustomizationChange'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_CustomizationChange';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\spawnmenu\fn_CustomizationChange.sqf [A3SClient_fnc_CustomizationChange]"
+
+scriptName"fn_CustomizationChange";_type=param[0,-1,[0]];if(_type isEqualTo-1) exitWith{};if(_type isEqualTo 0) then{a3s_headGearMenuIndex=a3s_headGearMenuIndex+1;if(a3s_headGearMenuIndex>=(count a3s_headGear)) then{a3s_headGearMenuIndex=0};if((a3s_headGear select a3s_headGearMenuIndex) isEqualTo"") then{removeHeadgear player;}else{player addHeadgear(a3s_headGear select a3s_headGearMenuIndex);};};if(_type isEqualTo 1) then{a3s_headGearMenuIndex=a3s_headGearMenuIndex-1;if(a3s_headGearMenuIndex<1) then{a3s_headGearMenuIndex=(count a3s_headGear-1)};if((a3s_headGear select a3s_headGearMenuIndex) isEqualTo"") then{removeHeadgear player;}else{player addHeadgear(a3s_headGear select a3s_headGearMenuIndex);};};if(_type isEqualTo 2) then{a3s_SkinMenuIndex=a3s_SkinMenuIndex+1;
+if(a3s_SkinMenuIndex>=(count a3s_skins)) then{a3s_SkinMenuIndex=0};a3s_local_skin=a3s_skins select a3s_SkinMenuIndex;player setFace a3s_local_skin;};if(_type isEqualTo 3) then{a3s_SkinMenuIndex=a3s_SkinMenuIndex-1;if(a3s_SkinMenuIndex<1) then{a3s_SkinMenuIndex=(count a3s_skins-1)};a3s_local_skin=a3s_skins select a3s_SkinMenuIndex;player setFace a3s_local_skin;};if(_type isEqualTo 4) then{a3s_clothingMenuIndex=a3s_clothingMenuIndex+1;if(a3s_clothingMenuIndex>=(count a3s_clothes)) then{a3s_clothingMenuIndex=0};_classname=a3s_clothes select a3s_clothingMenuIndex;player forceAddUniform _classname;};if(_type isEqualTo 5) then{a3s_clothingMenuIndex=a3s_clothingMenuIndex-1;if(a3s_clothingMenuIndex<1) then{a3s_clothingMenuIndex=(count a3s_clothes-1)};_classname=a3s_clothes select a3s_clothingMenuIndex;player forceAddUniform _classname;};
+}

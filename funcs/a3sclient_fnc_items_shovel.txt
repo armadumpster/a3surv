@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_items_Shovel'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_items_Shovel';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\items\fn_items_Shovel.sqf [A3SClient_fnc_items_Shovel]"
+
+scriptName"fn_items_Shovel";if(isDedicated) exitWith{};closeDialog 0;player playMoveNow"AinvPknlMstpSnonWnonDnon_medic_1";
+a3s_inAction=true;[cursorTarget]spawn{uisleep 4.5;a3s_inAction=false;deleteVehicle cursorTarget;["<t color='#A3FB26'>One less...</t>"]call A3SClient_fnc_addToFeed;};
+}

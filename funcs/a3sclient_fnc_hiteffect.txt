@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_hitEffect'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_hitEffect';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\visualeffects\fn_hitEffect.sqf [A3SClient_fnc_hitEffect]"
+
+scriptName"fn_hitEffect";_infectOption=param[0,true,[true]];_damage=damage player;a3s_grayScreenEffect ppEffectAdjust[1,1.1,-0.02,[1.5,-0.2,-0.2,.04],[1,1,1,0.1],[1,1,1,0.0]];a3s_grayScreenEffect ppEffectCommit 0;"dynamicBlur"ppEffectEnable true;"dynamicBlur"ppEffectAdjust[2];"dynamicBlur"ppEffectCommit 0;addCamShake[4,0.5,25];"colorCorrections"ppEffectAdjust[1,1,0,[0,0,0,0.0],[1,1,1,1],[1,1,1,0.0]];"colorCorrections"ppEffectCommit 0.6;
+"dynamicBlur"ppEffectAdjust[0];"dynamicBlur"ppEffectCommit 0.6;uisleep 0.2;a3s_grayScreenEffect ppEffectAdjust[1,1-((damage player)*0.6),0,0,0,0,0,1,1,1,1-((_damage)*1),0.299+((_damage)*(0.701)),0.587+((_damage)*(0.413)),0.114+((_damage)*(0.886)),0];a3s_grayScreenEffect ppEffectCommit 0.3;if(_damage>0.2) then{a3s_lowblood ppEffectAdjust[(_damage*0.61)];a3s_lowblood ppEffectCommit 0.3;}else{a3s_lowblood ppEffectAdjust[0];a3s_lowblood ppEffectCommit 0.3;};if(_infectOption) then{[2]spawn A3SClient_fnc_infectMe;};
+}

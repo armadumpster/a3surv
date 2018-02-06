@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_removeEventhandler'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_removeEventhandler';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\eventhandler\fn_removeEventhandler.sqf [A3SClient_fnc_removeEventhandler]"
+
+scriptName"fn_removeEventhandler";player removeAllEventHandlers"Killed";player removeAllEventHandlers"Fired";player removeAllEventHandlers"FiredNear";player removeAllEventHandlers"HandleDamage";player removeAllEventHandlers"Put";
+player removeAllEventHandlers"Take";player removeAllEventHandlers"InventoryOpened";player removeAllEventHandlers"InventoryClosed";player removeAllEventHandlers"Hit";player removeAllEventHandlers"GetOutMan";player removeAllEventHandlers"GetInMan";player removeAllEventHandlers"SeatSwitchedMan";
+}

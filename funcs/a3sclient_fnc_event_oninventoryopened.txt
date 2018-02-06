@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_event_onInventoryOpened'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_event_onInventoryOpened';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\eventhandler\fn_event_onInventoryOpened.sqf [A3SClient_fnc_event_onInventoryOpened]"
+
+scriptName"fn_event_onInventoryOpened";private["_cancelEvent","_container"];_container=_this select 1;_cancelEvent=false;L_MOUNT_container=_container;L_MOUNT_inventory=true;try{if(a3s_surrender) then {throw true;};if((locked _container) isEqualTo 2) then {throw true;
+};if(_container getVariable["IsLocked",1]isEqualTo-1) then {["<t color='#A3FB26'>I have to search it first</t>"]call A3SClient_fnc_addToFeed;throw true;};_PlayerMenu=[]spawn {waitUntil{!(isNull(findDisplay 602))};602 call A3SClient_fnc_RefreshInventoryHud;call A3SClient_fnc_AddBlurryEffect;};}catch{_cancelEvent=_exception;};_cancelEvent
+}

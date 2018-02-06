@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_evaluatePlayerData'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_evaluatePlayerData';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\database\fn_evaluatePlayerData.sqf [A3SClient_fnc_evaluatePlayerData]"
+
+scriptName"fn_evaluatePlayerData";if(isNull player) exitWith{diag_log"A3S_BUG : Character cannot created.";};if(a3s_PositionATL_Dir isEqualTo[[0,0,0],0,0]OR!a3s_Alive OR a3s_inCombat OR(a3s_PositionATL_Dir select 2) isEqualTo 1) then{player setDamage 0;player setVariable["brokenLegs",nil,true];player setVariable["bleeding",nil,true];deletevehicle a3s_blood;resetCamShake;a3s_brokenLegs=false;a3s_infected=false;a3s_thirst=100;a3s_hunger=100;a3s_Temperature=37;a3s_Wetness=0;{player removeAction _x;}foreach a3s_actions;a3s_actions=[];a3s_TimeSurvived=0;a3s_ZombiesKilled=0;a3s_PlayersKilled=0;a3s_Inventory=[];removeAllWeapons player;removeUniform player;removeGoggles player;removeAllItems player;removeBackpackGlobal player;removeVest player;removeHeadgear player;
+removeAllAssignedItems player;player forceAddUniform(selectRandom a3s_clothes);player setFace a3s_local_skin;_spawnpoint="";_spawnpointPos=[0,0,0];_spawnpoint=format["a3s_spawn_%1",(floor random(a3s_countSpawns+1))];_spawnpointPos=getMarkerPos _spawnpoint;if(_spawnpointPos isEqualTo[0,0,0]) then{_spawnpoint=format["a3s_spawn_%1",(floor random(a3s_countSpawns+1))];_spawnpointPos=getMarkerPos _spawnpoint;};a3s_pos=_spawnpointPos;a3s_dir=(random 361);a3s_newSpawn=true;a3s_Alive=true;}else{player setDamage(a3s_PositionATL_Dir select 2);if(a3s_brokenLegs) then{player setHitPointDamage["HitLegs",1];player setVariable["brokenlegs",true,true];}else{player setHitPointDamage["HitLegs",0];};_nil=call A3SClient_fnc_loadInventory;player setFace a3s_local_skin;a3s_pos=(a3s_PositionATL_Dir select 0);a3s_dir=(a3s_PositionATL_Dir select 1);};a3s_ClientReady=true;
+}

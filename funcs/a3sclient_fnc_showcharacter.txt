@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_showCharacter'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_showCharacter';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\spawnmenu\fn_showCharacter.sqf [A3SClient_fnc_showCharacter]"
+
+scriptName"fn_showCharacter";_closeSpectator=param[0,false,[false]];if(vehicle player!=player) exitWith{};if(!_closeSpectator) then{if(dialog) exitWith{};if(!(a3s_Alive)) exitWith{};if(a3s_inAction) exitWith{};if(a3s_isSpectating) exitWith{};CHARACTER_CAM="camera"camCreate(getPos player);showCinemaBorder false;CHARACTER_CAM cameraEffect["Internal","Back"];CHARACTER_CAM camSetPos ASLToAGL(eyePos player);CHARACTER_CAM camSetTarget[(player modelToWorld[0.7,0,0]) select 0,(player modelToWorld[0.7,0,1]) select 1,(player modelToWorld[0.7,0,1]) select 2];if(stance player isEqualTo"PRONE") then{CHARACTER_CAM camSetTarget[(player modelToWorld[0.7,0,1]) select 0,(player modelToWorld[0.7,0,1]) select 1,(player modelToWorld[0.7,0,1]) select 2];
+};CHARACTER_CAM camCommit 0;CHARACTER_CAM camSetPos[(player modelToWorld[0.0,2,1]) select 0,(player modelToWorld[0.0,2,1]) select 1,(player modelToWorld[0.7,0,1]) select 2];CHARACTER_CAM camSetFOV .65;CHARACTER_CAM camSetFocus[2,1];CHARACTER_CAM camCommit 1;uisleep 0.1;showCinemaBorder false;{if(_x!=player) then{_x hideObject true;};}forEach AllPlayers;a3s_isSpectating=true;}else{[]spawn{CHARACTER_CAM camSetPos ASLToAGL(eyePos player);CHARACTER_CAM camSetTarget(screenToWorld[0.5,0.5]);CHARACTER_CAM camSetFOV .65;CHARACTER_CAM camSetFocus[2,0];CHARACTER_CAM camCommit 1;uisleep 1;CHARACTER_CAM cameraEffect["TERMINATE","BACK"];camDestroy CHARACTER_CAM;{if(_x!=player) then{_x hideObject false;};}forEach AllPlayers;};a3s_isSpectating=false;};
+}

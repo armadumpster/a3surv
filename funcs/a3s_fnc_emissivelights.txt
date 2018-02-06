@@ -1,0 +1,78 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3S_fnc_emissiveLights'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3S_fnc_emissiveLights';
+	scriptName _fnc_scriptName;
+
+#line 1 "ca\structures_cfg\Misc_Powerlines\emmisiveLights.sqf [A3S_fnc_emissiveLights]"
+0 spawn {
+sleep .1;
+
+_prevPos = [0,0,0];
+
+A3S_stopLampCheck = false;
+
+0 spawn {
+
+_lat = -getNumber (configFile >> "CfgWorlds" >> worldName >> "latitude");
+_long = getNumber (configFile >> "CfgWorlds" >> worldName >> "longitude");
+_gmt = round(_long/360 * 24);
+_a = 4*(_long - 15 * _gmt);
+
+
+
+
+_pre = -1;
+_pre_1 = 0;
+
+waitUntil {
+if ((floor sunOrMoon == 1) || {floor sunOrMoon != _pre}) then {
+_pre = floor sunOrMoon;
+
+_b = 360/365 * (round(((date select 1)-1)*30.4375) + (date select 2) - 81);
+_st = asin(sin (23.45 * sin _b) * sin _lat + cos (23.45 * sin _b) * cos _lat * cos (15 * ((daytime + (_a + (9.87*sin(2*_b) - 7.53*cos _b - 1.5*sin _b))/60)-12))) < 3.97;
+if !(_st isEqualTo _pre_1) then {
+_pre_1 = _st;
+A3S_lampState = _st;
+};
+
+sleep .75;
+};
+
+sleep .25;
+
+A3S_stopLampCheck
+};
+};
+waitUntil {!isNil "A3S_lampState"};
+_pre_st = -1;
+waitUntil {
+_pos = positionCameraToWorld [0,0,0];
+
+if ((_pos distance _prevPos > 100) || !(A3S_lampState isEqualTo _pre_st)) then {
+_pre_st = A3S_lampState;
+_m = format ['ca\Structures\Misc_Powerlines\Data\powlines_%1.rvmat',['multi1','light1'] select A3S_lampState];
+{
+if (getObjectMaterials _x select 0 != _m) then {
+_x setObjectMaterial [0,_m];
+};
+
+nil
+} count (_pos nearObjects ["Land_PowLines_WoodL",400]);
+};
+
+sleep .5;
+
+A3S_stopLampCheck
+};
+};
+
+
+
+
+
+
+
+
+
+
+}

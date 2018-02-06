@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_createFireEffect'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_createFireEffect';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\functions\fn_createFireEffect.sqf [A3SClient_fnc_createFireEffect]"
+
+scriptName"fn_createFireEffect";private["_effect","_pos","_fire","_smoke"];private["_light","_brightness","_color","_ambient","_intensity","_attenuation"];_pos =_this select 0;_effect=_this select 1;_fire="";_smoke="";_light=objNull;_color =[1,0.85,0.6];_ambient=[1,0.3,0];switch(_effect) do{case"FIRE_SMALL":{_fire ="SmallDestructionFire";_smoke ="SmallDestructionSmoke";_brightness=1.0;_intensity=200;_attenuation=[0,0,0,2];};case"FIRE_MEDIUM":{_fire ="MediumDestructionFire";_smoke ="MediumDestructionSmoke";_brightness=1.0;_intensity=400;_attenuation=[0,0,0,2];};case"FIRE_BIG":{_fire ="BigDestructionFire";_smoke ="BigDestructionSmoke";_brightness=1.0;_intensity=1600;_attenuation=[0,0,0,1.6];};case"SMOKE_SMALL":{_smoke ="SmallDestructionSmoke";
+};case"SMOKE_MEDIUM":{_smoke ="MediumSmoke";};case"SMOKE_BIG":{_smoke ="BigDestructionSmoke";};};_eFire=objNull;if(_fire!="") then{_eFire="#particlesource"createVehicleLocal _pos;_eFire setParticleClass _fire;_eFire setPosATL _pos;};_eSmoke=objNull;if(_smoke!="") then{_eSmoke="#particlesource"createVehicleLocal _pos;_eSmoke setParticleClass _smoke;_eSmoke setPosATL _pos;};_light=objNull;if(_effect in["FIRE_BIG","FIRE_MEDIUM","FIRE_SMALL"]) then{_pos=[_pos select 0,_pos select 1,(_pos select 2)+1];_light=createVehicle["#lightpoint",_pos,[],0,"CAN_COLLIDE"];_light setPosATL _pos;_light setLightBrightness _brightness;_light setLightColor _color;_light setLightAmbient _ambient;_light setLightIntensity _intensity;_light setLightAttenuation _attenuation;_light setLightDayLight false;};[_eFire,_eSmoke,_light]
+}

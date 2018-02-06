@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_system_objectQUpdate'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_system_objectQUpdate';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\system\fn_system_objectQUpdate.sqf [A3SClient_fnc_system_objectQUpdate]"
+
+scriptName"fn_system_objectQUpdate";
+
+}

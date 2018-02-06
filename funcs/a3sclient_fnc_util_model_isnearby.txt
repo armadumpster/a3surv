@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_util_model_isNearby'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_util_model_isNearby';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\functions\fn_util_model_isNearby.sqf [A3SClient_fnc_util_model_isNearby]"
+
+scriptName"fn_util_model_isNearby";private["_position","_radius","_modelNames","_result","_modelName","_modelCount"];_position=_this select 0;_radius=_this select 1;
+_modelNames=_this select 2;_result=false;{_modelName=_x;_modelCount={((str(_x) find _modelName)!=-1)}count(_position nearObjects _radius);if(_modelCount>0) exitWith {_result=true };}foreach _modelNames;_result
+}

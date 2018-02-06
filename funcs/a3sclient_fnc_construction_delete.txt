@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_Construction_Delete'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_Construction_Delete';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\basebuilding\fn_Construction_Delete.sqf [A3SClient_fnc_Construction_Delete]"
+
+scriptName"fn_Construction_Delete";_object=a3s_pInact_curTarget;_ConstructionOwnerUID=_object getVariable["ConstructionOwnerUID",""];if!((getPlayerUid player) isEqualTo _ConstructionOwnerUID) exitWith{["<t color='#ffff00'>Im not the owner of this object</t>"]call A3SClient_fnc_addToFeed;};setMousePosition[0.5,0.5];_result=["Do you really want to delete this object?","Delete?","Yes","No"]call BIS_fnc_guiMessage;waitUntil{uiSleep 0.05;!isNil"_result"};if(_result) then{_ObjectClassname=typeOf _object;_configName=_ObjectClassname call A3SClient_fnc_util_gear_getConfigNameByClassName;_objectConfig=configFile>>_configName>>_ObjectClassname;_DisplayName=getText(_objectConfig>>"displayName");a3s_inAction=true;if(currentWeapon player!="") then{["<t color='#ffff00'>I will put my weapon back</t>"]call A3SClient_fnc_addToFeed;
+player action["switchWeapon",player,player,100];uisleep 3;};[format["<t color='#ffff00'>I started to delete %1</t>",_DisplayName]]call A3SClient_fnc_addToFeed;_progress=0.01;_exitWith=false;for"_i"from 0 to 1 step 0 do{if(animationState player!="AinvPknlMstpSnonWnonDnon_medic_1") then{player playMoveNow"AinvPknlMstpSnonWnonDnon_medic_1";};uisleep 1.4;_progress=_progress+0.1;if(!a3s_Alive) exitWith{_exitWith=true;};if(player distance _object>4) exitWith{_exitWith=true;};if(player!=vehicle player) exitWith{_exitWith=true;};if(_progress>=1) exitWith{};};a3s_inAction=false;player playActionNow"stop";if(_exitWith) exitWith{};[format["<t color='#ffff00'>I successful deleted %1</t>",_DisplayName]]call A3SClient_fnc_addToFeed;[_object,player]remoteExecCall["A3SServer_fnc_Construction_Delete",2];};true
+}

@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_object_item_use'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_object_item_use';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\inventory\fn_object_item_use.sqf [A3SClient_fnc_object_item_use]"
+
+scriptName"fn_object_item_use";private["_itemClassName","_wasUsed"];_itemClassName=_this select 0;_wasUsed=false;if(vehicle player!=player) exitWith{["<t color='#ffff00'>I have to be outside of a car</t>"]call A3SClient_fnc_addToFeed;};if(a3s_inAction) exitWith{["<t color='#ffff00'>Can not make two things at the same time</t>"]call A3SClient_fnc_addToFeed;
+};{if((_x select 0) isEqualTo _itemClassName AND!_wasUsed) then{if(call(_x select 2)) then{_wasUsed=true;[_itemClassName]spawn(_x select 1);waitUntil{!(isNull(findDisplay 602))};closeDialog 0;};};}forEach a3s_useableItems;if(!_wasUsed) then{["<t color='#ffff00'>I cannot use this item</t>"]call A3SClient_fnc_addToFeed;};true
+}

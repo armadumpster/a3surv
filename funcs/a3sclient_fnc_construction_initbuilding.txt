@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_Construction_initBuilding'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_Construction_initBuilding';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\basebuilding\fn_Construction_initBuilding.sqf [A3SClient_fnc_Construction_initBuilding]"
+
+scriptName"fn_Construction_initBuilding";private["_object","_staticObjectClassName","_freezeObjectNow","_positionBefore","_vectorDirectionBefore","_vectorUpBefore","_startTime","_velocity","_velocityAbsolute","_distanceMoved","_position","_vectorDirection","_vectorUp"];_object=_this;
+_staticObjectClassName=getText(a3s_ConstructionConfig>>"staticObject");_object enableSimulation false;_position=getPosATL _object;_vectorDirection=vectorDir _object;_vectorUp=vectorUp _object;deleteVehicle _object;[_staticObjectClassName,[_position,_vectorDirection,_vectorUp],getPlayerUID player]remoteExec["A3SServer_fnc_Construction_initBuilding",2];true
+}

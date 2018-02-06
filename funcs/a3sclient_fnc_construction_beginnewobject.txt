@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_Construction_beginNewObject'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_Construction_beginNewObject';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\basebuilding\fn_Construction_beginNewObject.sqf [A3SClient_fnc_Construction_beginNewObject]"
+
+scriptName"fn_Construction_beginNewObject";private["_kitClassName","_previewObjectClassName","_staticObjectClassName"];_kitClassName=_this select 0;a3s_ConstructionConfig=("getText(_x >> 'kitMagazine') == _kitClassName"configClasses(configFile>>"CfgConstruction")) select 0;_previewObjectClassName=getText(a3s_ConstructionConfig>>"previewObject");_staticObjectClassName=getText(a3s_ConstructionConfig>>"staticObject");a3s_ConstructionSnapToObjectClassNames=(a3s_ConstructionConfig>>"SnapObjects") call Bis_fnc_getCfgSubClasses;a3s_ConstructionProcess=1;a3s_ConstructionOffset=[0,5,0];a3s_ConstructionPosition=[0,0,0];a3s_ConstructionRotation=0;a3s_ConstructionKitClassName=_kitClassName;
+a3s_ConstructionObjectDisplayName=getText(configFile>>"CfgVehicles">>_staticObjectClassName>>"displayName");a3s_ConstructionMode=1;a3s_ConstructionIsInSelectSnapObjectMode=true;a3s_ConstructionSupportSnapMode=count(a3s_ConstructionSnapToObjectClassNames)>0;a3s_ConstructionCurrentSnapToObject=objNull;a3s_ConstructionPosition=[getPosATL player,a3s_ConstructionOffset select 1,getDir player]call A3SClient_fnc_util_math_getPositionInDirection;a3s_ConstructionPosition set[2,a3s_ConstructionOffset select 2];{player reveal _x;}forEach(player nearObjects["A3S_Construction_Static",20]);if((count _this)<2)then {[_previewObjectClassName,a3s_ConstructionPosition]call A3SClient_fnc_construction_buildRequest;}else {hint"Debug TerritoryRequest";};true
+}

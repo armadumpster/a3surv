@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_gui_loadingScreen_updateText'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_gui_loadingScreen_updateText';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\functions\fn_gui_loadingScreen_updateText.sqf [A3SClient_fnc_gui_loadingScreen_updateText]"
+
+scriptName"fn_gui_loadingScreen_updateText";private["_resource"];_resource=uiNameSpace getVariable["RscLoadingScreen",displayNull];
+if(!isNull _resource) then{(_resource displayCtrl 66003) ctrlSetStructuredText(parseText format["<t>%1</t>",_this]);};true
+}

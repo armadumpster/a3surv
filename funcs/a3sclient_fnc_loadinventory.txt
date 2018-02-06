@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_loadInventory'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_loadInventory';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\database\fn_loadInventory.sqf [A3SClient_fnc_loadInventory]"
+
+scriptName"fn_loadInventory";_inventoryToLoad=param[0,a3s_Inventory,[[]]];if(count _inventoryToLoad isEqualTo 0) exitWith{};removeAllWeapons player;removeUniform player;removeGoggles player;removeAllItems player;removeBackpackGlobal player;removeVest player;removeHeadgear player;removeAllAssignedItems player;_clothes=_inventoryToLoad select 0;player forceAddUniform(_clothes select 0);player addBackpackGlobal(_clothes select 1);player addVest(_clothes select 2);player addGoggles(_clothes select 3);player addHeadgear(_clothes select 4);{player addItem _x;player assignItem _x;}forEach(_inventoryToLoad select 4);_primaryArray=_inventorytoLoad select 2;if((_primaryArray select 0)!="") then{player addWeapon(_primaryArray select 0);};{player addPrimaryWeaponItem _x;}forEach(_primaryArray select 1);
+if((count(_primaryArray select 2))>0) then{player addMagazine((_primaryArray select 2) select 0);};_secondaryArray=_inventorytoLoad select 3;if((_secondaryArray select 0)!="") then{player addWeapon(_secondaryArray select 0);};{player addSecondaryWeaponItem _x;}forEach(_secondaryArray select 1);if((count(_secondaryArray select 2))>0) then{player addMagazine((_secondaryArray select 2) select 0);};_handgunArray=_inventorytoLoad select 5;if((_handgunArray select 0)!="") then{player addWeapon(_handgunArray select 0);};{player addhandgunItem _x;}forEach(_handgunArray select 1);if((count(_handgunArray select 2))>0) then{player addMagazine((_handgunArray select 2) select 0);};_items=(_inventoryToLoad select 1);{player addItemToUniForm _x;}forEach(_items select 0);{player addItemToBackpack _x;}forEach(_items select 1);{player addItemToVest _x;}forEach(_items select 2);
+}

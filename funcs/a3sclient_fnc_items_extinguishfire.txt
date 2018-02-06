@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_items_extinguishFire'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_items_extinguishFire';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\items\fn_items_extinguishFire.sqf [A3SClient_fnc_items_extinguishFire]"
+
+scriptName"fn_items_extinguishFire";private["_curTarget"];_curTarget=a3s_pInact_curTarget;if(isNull _curTarget) exitWith{};switch(typeOf _curTarget) do{case"a3s_Basebuilding_FirePlace":{_curTarget inflame false;
+["<t color='#A3FB26'>I have extinguished the campfire</t>"]call A3SClient_fnc_addToFeed;};case"a3s_Basebuilding_GasCooker":{_curTarget inflame false;_curTarget say3D"a3s_gas_cooker_off";["<t color='#A3FB26'>I have extinguished the gascooker</t>"]call A3SClient_fnc_addToFeed;};};
+}

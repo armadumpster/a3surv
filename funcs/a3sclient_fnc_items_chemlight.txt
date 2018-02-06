@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_items_Chemlight'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_items_Chemlight';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\items\fn_items_Chemlight.sqf [A3SClient_fnc_items_Chemlight]"
+
+scriptName"fn_items_Chemlight";_item=param[0,"",[""]];player removeItem _item;_v=_item createVehicle(position player);
+_v attachTo[vehicle player,[-0.1,0.1,0.15],"Pelvis"];_v setVectorDirAndUp[[0.5,0.5,0],[-0.5,0.5,0]];player setVariable["chemlight",_v];
+}

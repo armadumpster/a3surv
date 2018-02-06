@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_system_radiation_thread'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_system_radiation_thread';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\system\fn_system_radiation_thread.sqf [A3SClient_fnc_system_radiation_thread]"
+
+scriptName"fn_system_radiation_thread";if!((getNumber(missionConfigFile>>"CfgEnvironment">>worldName>>"Radiation">>"enable")) isEqualTo 1) exitWith{false};while{a3s_Alive}do{private["_distance","_damage"];a3s_PlayerRadiationLastCheck=a3s_PlayerRadiation;a3s_PlayerRadiation=0;{_distance=(_x select 0) distance(getPosASL player);if(_distance<(_x select 2)) exitWith {if(_distance<(_x select 1)) then {a3s_PlayerRadiation=1;}else {a3s_PlayerRadiation=1-((_distance-(_x select 1))/((_x select 2)-(_x select 1)));};if(a3s_PlayerRadiation>0.7) then {playSound[format["a3s_Sound_GeigerCounter_High0%1",1+(floor random 3)],true];_damage=1/(1*60)*2;}else {if(a3s_PlayerRadiation>0.3) then {playSound[format["a3s_Sound_GeigerCounter_Medium0%1",1+(floor random 3)],true];_damage=1/(3*60)*2;
+}else {playSound[format["a3s_Sound_GeigerCounter_Low0%1",1+(floor random 3)],true];_damage=1/(5*60)*2;};};if!("Mask_M40"in(assignedItems player)) then {player setDamage((damage player)+_damage);};};}forEach a3s_ContaminatedZones;if!(a3s_PlayerRadiation isEqualTo a3s_PlayerRadiationLastCheck) then{a3s_PostProcessing_RadiationColor ppEffectAdjust [1,linearConversion[0,1,a3s_PlayerRadiation,1,1.3],linearConversion[0,1,a3s_PlayerRadiation,0,-0.05],[0,0,0,0],[1.5,1.3,1,1-a3s_PlayerRadiation],[0.8,0.5,0.9,0],[0,0,0,0,0,0,4]];a3s_PostProcessing_RadiationColor ppEffectCommit 2;a3s_PostProcessing_RadiationChroma ppEffectAdjust[0.02*a3s_PlayerRadiation,0.02*a3s_PlayerRadiation,true];a3s_PostProcessing_RadiationChroma ppEffectCommit 2;a3s_PostProcessing_RadiationFilm ppEffectAdjust[a3s_PlayerRadiation,8.39,8,0.9,0.9,true];a3s_PostProcessing_RadiationFilm ppEffectCommit 2;};uisleep 2;};
+}

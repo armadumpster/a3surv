@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_init_client'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_init_client';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\fn_init_client.sqf [A3SClient_fnc_init_client]"
+
+scriptName"fn_init_client";if(hasInterface) then{waitUntil{!isNil"a3s_ConfigurationReady"};diag_log"Waiting for server to be ready...";waitUntil{!isNil"a3s_serverReady"};call A3SClient_fnc_system_draw3D;{private["_rsc","_idcs"];_rsc=_x;_idcs=[configfile>>"RscInGameUI">>_rsc,1,true]call BIS_fnc_displayControls;{((uiNameSpace getVariable _rsc) displayCtrl _x) ctrlSetPosition[0,0,0,0];((uiNameSpace getVariable _rsc) displayCtrl _x) ctrlCommit 0;}forEach _idcs;}forEach["RscStanceInfo","RscUnitInfo"];
+player addAction["Extinguish Chemlight",{deleteVehicle(player getVariable["chemlight",objNull]);player setVariable["chemlight",objNull];},nil,1.5,true,true,"","!isNull (player getVariable ['chemlight',objNull])"];player setSpeaker"NoVoice";{_x setHit["light_1_hitpoint",0.97];_x setHit["light_2_hitpoint",0.97];_x setHit["light_3_hitpoint",0.97];_x setHit["light_4_hitpoint",0.97];}forEach nearestObjects[[7397.47,7378.64,0.00170898],["Lamps_base_F","PowerLines_base_F","PowerLines_Small_base_F"],8000];uisleep 5;a3s_init_client=true;};
+}

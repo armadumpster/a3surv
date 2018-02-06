@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_Surrender'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_Surrender';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\interaction\pinteraction\fn_Surrender.sqf [A3SClient_fnc_Surrender]"
+
+scriptName"fn_Surrender";closedialog 0;a3s_surrender=true;player forceWalk true;if(currentWeapon player!="") then{["<t color='#ffff00'>I will put my weapon back</t>"]call A3SClient_fnc_addToFeed;player action["switchWeapon",player,player,100];uisleep 3;
+};for"_i"from 0 to 1 step 0 do{if(player getVariable["cuffed",false]) exitWith{};if(!a3s_surrender) exitWith{player playActionNow"A3s_SurrenderAnimation_Down";player forceWalk false;};if!(isNull(findDisplay 602)) then{closeDialog 0;};player playActionNow"A3s_SurrenderAnimation";uisleep 0.5;};
+}

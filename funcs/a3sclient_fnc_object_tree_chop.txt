@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_object_tree_chop'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_object_tree_chop';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\functions\fn_object_tree_chop.sqf [A3SClient_fnc_object_tree_chop]"
+
+scriptName"fn_object_tree_chop";private["_treeModelNames","_tree"];_treeModelNames=getArray(missionConfigFile>>"CfgInteractionModels">>"WoodSource">>"models");
+_tree=_treeModelNames call A3SClient_fnc_util_model_getLookAt;if(!isNull _tree) then{if(alive _tree) then {[(netId _tree),player]remoteExecCall["A3SServer_fnc_object_tree_network_chopTreeRequest",2];};};true
+}

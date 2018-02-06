@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_util_model_isLookingAt'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_util_model_isLookingAt';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\functions\fn_util_model_isLookingAt.sqf [A3SClient_fnc_util_model_isLookingAt]"
+
+scriptName"fn_util_model_isLookingAt";private["_modelNames","_result","_objects","_modelName","_modelCount"];_modelNames=_this;_result=false;_objects=lineIntersectsWith[eyePos player,ATLtoASL(player modelToWorld[0,3,0]),player,objNull,true];
+{_modelName=_x;_modelCount={((str(_x) find _modelName)!=-1)}count(_objects);if(_modelCount>0) exitWith {_result=true };}foreach _modelNames;_result
+}

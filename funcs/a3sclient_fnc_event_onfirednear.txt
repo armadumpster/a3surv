@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_event_onFiredNear'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_event_onFiredNear';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\eventhandler\fn_event_onFiredNear.sqf [A3SClient_fnc_event_onFiredNear]"
+
+scriptName"fn_event_onFiredNear";private["_distance","_weapon"];_distance=_this select 2;_weapon=_this select 3;
+_putInCombat=true;if!(_weapon in["Throw","Put","A3S_Melee_Axe"]) then{a3s_inCombat=true;a3s_lastCombatAt=diag_tickTime;};true
+}

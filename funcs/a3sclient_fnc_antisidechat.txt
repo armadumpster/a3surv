@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_antiSideChat'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_antiSideChat';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\functions\fn_antiSideChat.sqf [A3SClient_fnc_antiSideChat]"
+
+scriptName"fn_antiSideChat";a3s_checkForSideChat=true;while{a3s_checkForSideChat}do{waitUntil{uisleep 1;((!isNull findDisplay 63)&&(!isNull findDisplay 55))};if(ctrlText((findDisplay 55) displayCtrl 101) isEqualTo"\A3\ui_f\data\igui\rscingameui\rscdisplayvoicechat\microphone_ca.paa") then {if((ctrlText((findDisplay 63) displayCtrl 101) isEqualTo"Side channel")||(ctrlText((findDisplay 63) displayCtrl 101) isEqualTo localize"str_channel_side")) then {a3s_sideChatWarningCount=a3s_sideChatWarningCount+1;
+if(a3s_sideChatWarningCount>=2) then{hint"Stop talking in side chat!";};if(a3s_sideChatWarningCount>=5) then{player setDamage 1;[]call A3SClient_fnc_savePlayerData;disableUserInput true;sleep 6;disableUserInput false;a3s_kickMe=0;publicVariable"a3s_kickMe";sleep 1;endMission"SIDECHAT";};};};};
+}

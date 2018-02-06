@@ -1,0 +1,15 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3S_fnc_lock'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3S_fnc_lock';
+	scriptName _fnc_scriptName;
+
+#line 1 "ca\structures_cfg\scripts\fn_lock.sqf [A3S_fnc_lock]"
+
+
+
+
+
+(_this select 0) animate [(_this select 1), 0]; sleep .05;
+(_this select 0) animate [(_this select 2), 1]; sleep .05;
+(_this select 0) animate [(_this select 3), 0]; sleep .05;
+(_this select 0) animate [(_this select 4), 1];}

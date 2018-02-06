@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_processZombieData'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_processZombieData';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\zombie\fn_processZombieData.sqf [A3SClient_fnc_processZombieData]"
+
+scriptName"fn_processZombieData";_dataToProcess=param[0,[],[[]]];if(count _dataToProcess isEqualTo 0) exitWith{};{_building=(_x select 0);_player=(_x select 1);_type=a3s_sv_zombies_civilian select(floor random((count a3s_sv_zombies_civilian)-1));_positionFound=false;_pos=[0,0,0];_tries=1000;while{!_positionFound AND _tries>0}do{_baseX=((getPos _building) select 0)-50;_baseY=((getPos _building) select 1)-50;_pos=[(_baseX+(random 100)),(_baseY+(random 100)),0];if(({(!lineIntersects[(AGLtoASL _pos),(eyePos _x),_x,objNull])}count AllPlayers) isEqualTo 0 AND((_player distance _pos)>10) AND(_pos distance _player<a3s_sv_zombies_maxRadius)) then {_positionFound=true;
+};_tries=_tries-1;};if(_positionFound) then{if(isNil"_type") then{_type=a3s_sv_zombies_civilian select(floor random((count a3s_sv_zombies_civilian)-1));};diag_log format["Spawning Zombie %1 at %2",_type,_pos];_unit=createAgent[_type,_pos,[],0,"NONE"];_unit setVariable["zombieOwner",player,true];_unit setVariable['isZombie',true,true];_unit setAnimSpeedCoef 0.9;_unit addEventHandler["Killed",{(_this select 0) setVariable["timeSinceDeath",serverTime,true];removeVest(_this select 0);removeBackpack(_this select 0);}];_unit disableAI"FSM";_unit setBehaviour"CARELESS";};uisleep 1;}forEach _dataToProcess;
+}

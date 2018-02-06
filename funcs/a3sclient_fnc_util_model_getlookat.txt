@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_util_model_getLookAt'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_util_model_getLookAt';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\functions\fn_util_model_getLookAt.sqf [A3SClient_fnc_util_model_getLookAt]"
+
+scriptName"fn_util_model_getLookAt";private["_modelNames","_foundObject","_objects","_object","_objectClassName"];_modelNames=_this;_foundObject=objNull;_objects=lineIntersectsWith[eyePos player,ATLtoASL(player modelToWorld[0,1.5,0]),player,objNull,true];
+{_object=_x;_objectClassName=toLower(str _object);{if((_objectClassName find(toLower _x))!=-1) exitWith {_foundObject=_object;};}forEach _modelNames;if(!isNull _foundObject) exitWith{};}forEach _objects;_foundObject
+}

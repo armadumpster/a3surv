@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_event_onHit'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_event_onHit';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\eventhandler\fn_event_onHit.sqf [A3SClient_fnc_event_onHit]"
+
+scriptName"fn_event_onHit";[15*damage player]call BIS_fnc_bloodEffect;[false]spawn A3SClient_fnc_hitEffect;a3s_inCombat=true;a3s_lastCombatAt=diag_tickTime;if(!(player getVariable["bleeding",false]) AND((random 100)<20)) then{call A3SClient_fnc_bleeding;
+};if(!a3s_IsUnconscious) then{private["_dmg","_r"];_dmg=(damage player);if(_dmg>=0.50&&_dmg!=1) then{_r=floor random 101;_percent=linearConversion[0.5,0.95,_dmg,0,40,true];if(_r<=_percent) then{call A3SClient_fnc_Unconscious;};};};true
+}

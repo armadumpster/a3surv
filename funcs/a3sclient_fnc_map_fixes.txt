@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_map_fixes'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_map_fixes';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\functions\fn_map_fixes.sqf [A3SClient_fnc_map_fixes]"
+
+scriptName"fn_map_fixes";_myBuildings=[["Land_HouseV_3I1","A3S_HouseV_3I1",0],["Land_HouseV_3I4","A3S_HouseV_3I4",0],["Land_HouseV2_01A","A3S_HouseV2_01A",0],["Land_HouseV2_01B","A3S_HouseV2_01B",0]];for"_i"from 0 to(count _myBuildings-1) do{_CurrentBuilding =(_myBuildings select _i) select 0;_ReplacementBuilding=(_myBuildings select _i) select 1;
+_DirectionOffset =(_myBuildings select _i) select 2;{if((typeOf _x) isEqualTo _CurrentBuilding)then{_x hideObject true;deleteVehicle _x;_myReplacement=_ReplacementBuilding createVehicleLocal(getPosATL _x);_myReplacement setDir(getdir _x)+_DirectionOffset;_myReplacement enableSimulation false;_myReplacement allowdamage false;};}forEach nearestObjects[markerpos"center",[_CurrentBuilding],12000];};
+}

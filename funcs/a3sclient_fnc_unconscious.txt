@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_Unconscious'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_Unconscious';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\effects\fn_Unconscious.sqf [A3SClient_fnc_Unconscious]"
+
+scriptName"fn_Unconscious";if(!a3s_alive) exitWith{};a3s_IsUnconscious=true;player setVariable["unconscious",true,true];closedialog 0;disableUserInput true;if((animationState player) in["amovpercmwlksnonwnondb","amovpercmstpsnonwnondnon","amovpercmrunsnonwnondbl","amovpercmrunsnonwnondb","amovpercmrunsnonwnondbr"]) then{player playAction"Die";}else{0 spawn{player setUnconscious true;_condition=true;while{_condition}do{if(a3s_IsUnconscious) then{if((animationState player) in["unconsciousfacedown","unconsciousrevivedefault"]) exitWith{player playAction"Die";_condition=false;};}else{_condition=false;};uisleep 0.1;};};};5000 cutRsc["blackbackground","BLACK",999];5001 cutRsc["DeathScreen","Plain"];
+disableSerialization;_ctrl=uiNamespace getVariable"A3S_Deathscreen";_message=_ctrl select 0;_message ctrlSetStructuredText parseText format["<t align='center' shadow='0' size='1.3' color='#99ffffff' font='CrayonHand'>You are unconscious</t>"];5 fadeSound 0.15;0 spawn{_UncTime=40;_UncTime=_UncTime+(floor(random 50));while{(player getVariable["unconscious",false])}do{if(_UncTime isEqualTo 0||!a3s_IsUnconscious) then{player setVariable["unconscious",nil,true];a3s_IsUnconscious=false;player playMove"AmovPpneMrunSnonWnonDfr";5 fadeSound 1;5000 cutRsc["blackbackgroundfadein","PLAIN"];5001 cutText["","Plain"];disableUserInput false;["<t color='#A3FB26'>I wake up...</t>"]call A3SClient_fnc_addToFeed;};uisleep 1;_UncTime=_UncTime-1;};player setUnconscious false;};
+}

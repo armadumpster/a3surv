@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_event_onKilled'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_event_onKilled';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\eventhandler\fn_event_onKilled.sqf [A3SClient_fnc_event_onKilled]"
+
+scriptName"fn_event_onKilled";closeDialog 0;if(!a3s_Alive) exitWith{};a3s_Alive=false;player setVariable["unconscious",nil,true];a3s_IsUnconscious=false;a3s_surrender=false;[2]call A3SClient_fnc_savePlayerDataPatrial;a3s_inGame=nil;_killer=_this select 1;if((isPlayer _killer)&&!(_killer isEqualTo player)) then{{a3s_PlayersKilled=a3s_PlayersKilled+1;}remoteExecCall["BIS_FNC_SPAWN",(_this select 1)];};5000 cutRsc["blackbackground","BLACK",999];5001 cutRsc["DeathScreen","Plain"];if!((vehicle player) isEqualTo player) then{unassignVehicle player;player action["GetOut",vehicle player];player action["Eject",vehicle player];};if(a3s_ClientBurlapkVisible) then{false call A3SClient_fnc_gui_burlap_toggle;
+};0 call A3SClient_fnc_removeEventhandler;player setVariable["timeSinceDeath",serverTime,true];player setVariable["isPlayerCorpse",true,true];if(!userInputDisabled) then{disableUserInput true;}else{};[]spawn{uisleep 9;disableUserInput false;};[player]remoteExec["A3SServer_fnc_onDeathEffects",2];5 fadeSound 0;1 fadeMusic 1;showChat false;false call A3SClient_fnc_gui_gasMask_toggle;a3s_grayScreenEffect ppEffectEnable false;a3s_lowblood ppEffectEnable false;a3s_PostProcessing_RadiationChroma ppEffectEnable false;a3s_PostProcessing_RadiationColor ppEffectEnable false;a3s_PostProcessing_RadiationFilm ppEffectEnable false;[]spawn A3SClient_fnc_deathscreen;
+}

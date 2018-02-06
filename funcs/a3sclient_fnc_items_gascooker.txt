@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_items_GasCooker'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_items_GasCooker';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\items\fn_items_GasCooker.sqf [A3SClient_fnc_items_GasCooker]"
+
+scriptName"fn_items_GasCooker";player removeItem"A3S_Item_GasCooker";player playMoveNow"AinvPknlMstpSlayWrflDnon";_fireplace="a3s_Basebuilding_GasCooker"createVehicle[0,0,0];
+_fireplace setPosATL getPosATL player;player reveal _fireplace;["<t color='#A3FB26'>The gas cooker is on the ground</t>"]call A3SClient_fnc_addToFeed;
+}

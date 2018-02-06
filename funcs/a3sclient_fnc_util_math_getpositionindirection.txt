@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_util_math_getPositionInDirection'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_util_math_getPositionInDirection';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\basebuilding\fn_util_math_getPositionInDirection.sqf [A3SClient_fnc_util_math_getPositionInDirection]"
+
+scriptName"fn_util_math_getPositionInDirection";private["_position","_distance","_direction","_result"];_position=_this select 0;
+_distance=_this select 1;_direction=_this select 2;_result=[(_position select 0)+(_distance*sin _direction),(_position select 1)+(_distance*cos _direction),(_position select 2)];_result
+}

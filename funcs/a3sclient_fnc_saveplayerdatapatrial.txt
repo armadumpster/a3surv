@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_savePlayerDataPatrial'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_savePlayerDataPatrial';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\basebuilding\fn_savePlayerDataPatrial.sqf [A3SClient_fnc_savePlayerDataPatrial]"
+
+scriptName"fn_savePlayerDataPatrial";if(isNil"a3s_inGame") exitWith{};private["_mode","_finalPlayerData"];_mode=param[0,0,[0]];_finalPlayerData=[];switch(_mode) do{case 0:{_finalPlayerData=[[getPosATL player,getDir player,damage player]];};case 1:{call A3SClient_fnc_saveInventory;_finalPlayerData=[a3s_Inventory];};case 2:{_alive=a3s_Alive;if(_alive) then{_alive=1}else{_alive=0};_finalPlayerData=[_alive];};case 3:{_finalPlayerData=[[a3s_hunger,a3s_thirst,if(a3s_brokenLegs) then{1}else{0},if(a3s_infected) then{1}else{0},a3s_Temperature,a3s_Wetness]];
+};case 4:{a3s_TimeSurvived=a3s_TimeSurvived+(diag_tickTime-a3s_ClientTimeUpdate);_finalPlayerData=[round(a3s_TimeSurvived)];a3s_ClientTimeUpdate=diag_tickTime;};case 5:{_finalPlayerData=[a3s_ZombiesKilled];};case 6:{_inCombat=a3s_inCombat;if(_inCombat) then{_inCombat=1}else{_inCombat=0};_finalPlayerData=[_inCombat];};case 7:{_finalPlayerData=[a3s_PlayersKilled];};};[_finalPlayerData,player,_mode]remoteExecCall["A3SServer_fnc_savePlayerToDatabasePatrial",2];
+}

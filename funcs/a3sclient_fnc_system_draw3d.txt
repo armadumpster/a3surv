@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_system_draw3D'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_system_draw3D';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\system\fn_system_draw3D.sqf [A3SClient_fnc_system_draw3D]"
+
+scriptName"fn_system_draw3D";addMissionEventHandler["Draw3D",{_curTarget=cursortarget;if((isPlayer _curTarget) AND(_curTarget isKindOf"Man") AND(player distance _curTarget<2)) exitWith{_curPos=getPosVisual _curTarget;drawIcon3D["A3S_assets\ui\ActionMenu\TAB_Icon.paa",[1,1,1,1],[_curPos select 0,_curPos select 1,1.25],2,2,0,"Press Tab",2,0.04,"CrayonHand"];};if(typeOf _curTarget in a3s_inflammeableObjects AND(player distance _curTarget<1.5)) exitWith{_curPos=getPosVisual _curTarget;drawIcon3D["A3S_assets\ui\ActionMenu\TAB_Icon.paa",[1,1,1,1],[_curPos select 0,_curPos select 1,0.05],3,3,0,"Press Tab",2,0.06,"CrayonHand"];
+};if(typeOf _curTarget in a3s_bb_objectlist AND(player distance _curTarget<4)) exitWith{_curPos=getPosVisual _curTarget;drawIcon3D["A3S_assets\ui\ActionMenu\TAB_Icon.paa",[1,1,1,1],[_curPos select 0,_curPos select 1,0.9],3,3,0,"Press Tab",2,0.06,"CrayonHand"];};_curTarget=cursorObject;if(typeOf _curTarget in a3s_refuelBuildings AND(player distance _curTarget<6)) exitWith{_curPos=getPosVisual _curTarget;drawIcon3D["A3S_assets\ui\ActionMenu\TAB_Icon.paa",[1,1,1,1],[_curPos select 0,_curPos select 1,1],3,3,0,"Press Tab",2,0.06,"CrayonHand"];};}];
+}

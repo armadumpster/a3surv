@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_requestData'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_requestData';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\database\fn_requestData.sqf [A3SClient_fnc_requestData]"
+
+scriptName"fn_requestData";
+[player]remoteExec["A3SServer_fnc_requestPlayerData",2];
+}

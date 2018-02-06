@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_system_objectCleaner'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_system_objectCleaner';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\system\fn_system_objectCleaner.sqf [A3SClient_fnc_system_objectCleaner]"
+
+scriptName"fn_system_objectCleaner";private["_i"];
+_i=count _this;{deleteVehicle _x;_i=_i-1;if(_i isEqualTo 0) then{_this resize 0;};}foreach _this;
+}

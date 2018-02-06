@@ -1,0 +1,30 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3S_fnc_Pump'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3S_fnc_Pump';
+	scriptName _fnc_scriptName;
+
+#line 1 "ca\structures_cfg\scripts\fn_Pump.sqf [A3S_fnc_Pump]"
+
+(_this select 0) say (_this select 1);
+(_this select 0) animate [(_this select 2), 1];
+(_this select 0) animate [(_this select 3), 1];
+(_this select 0) animate [(_this select 4), 1];
+(_this select 0) animate [(_this select 5), 1]; sleep 1.390;
+
+(_this select 0) say (_this select 1);
+(_this select 0) animate [(_this select 2), 0];
+(_this select 0) animate [(_this select 3), 0];
+(_this select 0) animate [(_this select 4), 0];
+(_this select 0) animate [(_this select 5), 0]; sleep 1.390;
+
+(_this select 0) say (_this select 1);
+(_this select 0) animate [(_this select 2), 1];
+(_this select 0) animate [(_this select 3), 1];
+(_this select 0) animate [(_this select 4), 1];
+(_this select 0) animate [(_this select 5), 1]; sleep 1.390;
+
+(_this select 0) say (_this select 1);
+(_this select 0) animate [(_this select 2), 0];
+(_this select 0) animate [(_this select 3), 0];
+(_this select 0) animate [(_this select 4), 0];
+(_this select 0) animate [(_this select 5), 0]; sleep 1.390;}

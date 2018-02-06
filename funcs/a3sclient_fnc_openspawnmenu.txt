@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_OpenSpawnMenu'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_OpenSpawnMenu';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\spawnmenu\fn_OpenSpawnMenu.sqf [A3SClient_fnc_OpenSpawnMenu]"
+
+scriptName"fn_OpenSpawnMenu";disableSerialization;ctrlSetFocus((findDisplay 999) displayCtrl 50);[]spawn{uisleep 0.3;showCinemaBorder false;cutText["","BLACK IN",6];
+uisleep 1.5;call A3SClient_fnc_setup_ui;createDialog"RscDisplayMainMenu";disableSerialization;_display=findDisplay 999;};if(difficulty isEqualTo 3) then{1 enableChannel false;};
+}

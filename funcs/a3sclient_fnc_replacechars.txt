@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_ReplaceChars'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_ReplaceChars';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\functions\fn_ReplaceChars.sqf [A3SClient_fnc_ReplaceChars]"
+
+scriptName"fn_ReplaceChars";private["_str","_old","_new","_out","_tmp","_la","_lo","_i"];_str=_this select 0;_arr=toArray(_str);_la=count _arr;_old=_this select 1;_new=_this select 2;_arr2=toArray(_old);_out2=[];for"_i"from 0 to(count _arr2)-1 do{_out2=_out2+[toString([_arr2 select _i])];
+};_lo=count(_out2);_out="";for"_i"from 0 to(count _arr)-1 do{_tmp="";if(_i<=_la-_lo) then{for"_j"from _i to(_i+_lo-1) do{_tmp=_tmp+toString([_arr select _j]);};};if(_tmp==_old) then{_out=_out+_new;_i=_i+_lo-1;}else{_out=_out+toString([_arr select _i]);};};_out
+}

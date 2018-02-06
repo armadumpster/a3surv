@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_bleeding'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_bleeding';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\effects\fn_bleeding.sqf [A3SClient_fnc_bleeding]"
+
+scriptName"fn_bleeding";player setVariable["bleeding",true,true];addCamShake[4,9999,0.5];["<t color='#D90C01'>I am bleeding</t>"]call A3SClient_fnc_addToFeed;[]spawn{a3s_blood="#particlesource"createVehicleLocal getpos player;a3s_blood setParticleParams[["\A3\data_f\ParticleEffects\Universal\smoke.p3d",1,0,1],"","Billboard",1,0,[0,0,1.1],[0,0,0],0,10000,1,0.01,[0.1,0.05],[[0.01,0,0,0.6],[0.05,0,0,0.3],[0.01,0,0.01,0.5]],[0],1,0,"","",player];
+a3s_blood setParticleRandom[3,[0,0,0],[0,0,0.1],0,0.5,[0,0,0,0.5],1,0];a3s_blood setParticleCircle[0,[0,0,0]];a3s_blood setDropInterval 0.05;;};
+}

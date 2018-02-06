@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_PrepareSpawnMenu'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_PrepareSpawnMenu';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\spawnmenu\fn_PrepareSpawnMenu.sqf [A3SClient_fnc_PrepareSpawnMenu]"
+
+scriptName"fn_PrepareSpawnMenu";disableSerialization;_spawnPos=a3s_cl_spawnmenu_pos;_spawnPos set[0,((a3s_cl_spawnmenu_pos select 0)-1)+(random 2)];_spawnPos set[1,((a3s_cl_spawnmenu_pos select 1)-1)+(random 2)];player setPos _spawnPos;player setDir a3s_cl_spawnmenu_dir;player allowDamage false;hint"";[[player],{(_this select 0) hideObjectGlobal true}]remoteExecCall["BIS_FNC_SPAWN",2];player action["WEAPONONBACK",player];INTRO_CAM="camera"camCreate(getPos player);
+showCinemaBorder false;INTRO_CAM cameraEffect["Internal","Back"];INTRO_CAM camSetTarget(player modelToWorld[0.5,0,1.4]);INTRO_CAM camSetPos(player modelToWorld[0,2.2,1.2]);INTRO_CAM camSetFOV .60;INTRO_CAM camSetFocus[-1,1];INTRO_CAM camCommit 1;uisleep 0.1;showCinemaBorder false;showChat false;[]spawn{uisleep 0.5;player hideObject false;};if!(daytime>8 AND daytime<17) then{_chemlight="chemlight_green"createVehicleLocal(player modelToWorld[0,4,1]);_chemlight setPos(player modelToWorld[0,4,1]);};
+}

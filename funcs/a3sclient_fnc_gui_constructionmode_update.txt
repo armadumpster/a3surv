@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_gui_constructionMode_update'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_gui_constructionMode_update';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\basebuilding\fn_gui_constructionMode_update.sqf [A3SClient_fnc_gui_constructionMode_update]"
+
+scriptName"fn_gui_constructionMode_update";private["_display","_title","_titleControl","_description","_descriptionBackground"];disableSerialization;_display=uiNamespace getVariable"ConstructionTitle";
+if(!isNull _display) then{_title="";switch(a3s_ConstructionMode) do {case 1:{_title="FREE MODE";};case 2:{_title="GRID MODE";};case 3:{_title="SNAP MODE";};};_titleControl=_display displayCtrl 1000;_titleControl ctrlSetText _title;};true
+}

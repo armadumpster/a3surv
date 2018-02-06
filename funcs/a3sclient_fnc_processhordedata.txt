@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_processHordeData'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_processHordeData';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\zombie\fn_processHordeData.sqf [A3SClient_fnc_processHordeData]"
+
+scriptName"fn_processHordeData";_dataToProcess=param[0,[],[[]]];if(count _dataToProcess isEqualTo 0) exitWith{};_array=_dataToProcess call BIS_FNC_selectRandom;_building=_array select 0;_player=_array select 1;_type=a3s_sv_zombies_civilian select(floor random((count a3s_sv_zombies_civilian)-1));_positionFound=false;_pos=[0,0,0];_tries=1000;while{!_positionFound AND _tries>0}do{_baseX=((getPos _building) select 0)-50;_baseY=((getPos _building) select 1)-50;_pos=[(_baseX+(random 100)),(_baseY+(random 100)),0];if(({(!lineIntersects[(AGLtoASL _pos),(eyePos _x),_x,objNull])}count AllPlayers) isEqualTo 0 AND((_player distance _pos)>10) AND(_pos distance _player<a3s_sv_zombies_maxRadius)) then {_positionFound=true;};_tries=_tries-1;};if(_positionFound) then{if(isNil"_type") then{_type=a3s_sv_zombies_civilian select(floor random((count a3s_sv_zombies_civilian)-1));
+};for"_i"from 0 to 8 do{uisleep 0.3;_type=a3s_sv_zombies_civilian select(floor random((count a3s_sv_zombies_civilian)-1));_zombie=createAgent[_type,_pos,[],0,"NONE"];_pos set[0,(_pos select 0)-1.5+(random 3)];_zombie setVariable["zombieOwner",player,true];_zombie setVariable['isZombie',true,true];_zombie setAnimSpeedCoef 0.9;_zombie addEventHandler["Killed",{(_this select 0) setVariable["timeSinceDeath",serverTime,true];removeVest(_this select 0);removeBackpack(_this select 0);}];_zombie disableAI"FSM";_zombie setBehaviour"CARELESS";};if(isNil{player getVariable"fired"}) then{player setVariable["fired",true,true];uisleep 6;player setVariable["fired",nil,true];}else{player setVariable["fired",nil,true];uisleep 1;player setVariable["fired",true,true];uisleep 4;player setVariable["fired",nil,true];};};
+}

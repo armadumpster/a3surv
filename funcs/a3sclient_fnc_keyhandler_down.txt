@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_keyHandler_Down'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_keyHandler_Down';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\eventhandler\fn_keyHandler_Down.sqf [A3SClient_fnc_keyHandler_Down]"
+
+scriptName"fn_keyHandler_Down";if(isDedicated) exitWith{};private["_handled","_shift","_alt","_code","_ctrl","_alt","_ctrlKey","_veh","_locked","_interactionKey","_mapKey","_interruptionKeys"];_ctrl=_this select 0;_code=_this select 1;_shift=_this select 2;_ctrlKey=_this select 3;_alt=_this select 4;_handled=false;if(_code isEqualTo 62 AND _alt) then{true};if((_code in(actionKeys"nightVision"))&&a3s_ClientGasMaskVisible) exitWith{true};if(_code in(actionKeys"TacticalView")) exitWith{true};if(_code in(actionKeys"binocular")&&a3s_surrender) exitWith{true};if(_code in(actionKeys"gear")&&a3s_surrender) exitWith{true};if(_code in(actionKeys"ShowMap")) then{if(!a3s_surrender) then{call tao_foldmap_fnc_toggle;};_handled=true;};switch(_code) do{case 11:{_handled=true;};case 14:{_handled=true;
+};case 36:{_handled=true;};case 63:{_handled=true;};case 64:{_handled=true;};case 65:{_handled=true;};case 66:{_handled=true;};case 67:{_handled=true;};case 68:{_handled=true;};case 78:{_handled=true;};case 0x02:{_handled=true;};case 0x03:{_handled=true;};case 0x04:{_handled=true;};case 0x05:{_handled=true;};case 0xD2:{_handled=true;};case 0x10:{if(a3s_IsInConstructionMode) then {_stopPropagation=true;};};case 0x12:{if(a3s_IsInConstructionMode) then {_stopPropagation=true;};};case 0xC9:{if(a3s_IsInConstructionMode) then {_stopPropagation=true;};};case 0xD1:{if(a3s_IsInConstructionMode) then {_stopPropagation=true;};};case 0x39:{if(a3s_IsInConstructionMode) then {_stopPropagation=true;};};case 25:{if(!a3s_inAction) then{[]spawn A3SClient_fnc_openPlayerList;};_handled=true;};case 0x01:{if(a3s_IsInConstructionMode) then {a3s_ConstructionResult=2;_handled=true;};};};_handled
+}

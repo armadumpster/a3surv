@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_items_heatpack'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_items_heatpack';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\items\fn_items_heatpack.sqf [A3SClient_fnc_items_heatpack]"
+
+scriptName"fn_items_heatpack";player removeItem"A3S_Item_HeatPack";
+a3s_temperature=(a3s_temperature+0.5) min 37;["<t color='#A3FB26'>I feel warmer</t>"]call A3SClient_fnc_addToFeed;
+}

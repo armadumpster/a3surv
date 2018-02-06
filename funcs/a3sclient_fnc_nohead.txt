@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_noHead'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_noHead';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\functions\fn_noHead.sqf [A3SClient_fnc_noHead]"
+
+scriptName"fn_noHead";private["_selection","_passedDamage","_projectile"];_selection=_this select 0;_passedDamage=_this select 1;_projectile=_this select 2;if(_selection isEqualTo"head"&&_passedDamage>=1) then{if(face player!="RyanZombieNoFace") then {_caliber=getNumber(configFile>>"CfgAmmo">>_projectile>>"caliber");if(_caliber>=a3s_caliberneeded) then {player setdamage 1;player setFace"RyanZombieNoFace";player remoteExecCall["RZ_fnc_HeadParticles"];[player,"RyanZombieNoFace"]remoteExecCall["setFace"];
+removeHeadgear player;removeGoggles player;_hmd=(hmd player);player unassignItem _hmd;player removeItem _hmd;_HeadExplodeArray=["ryanzombies\sounds\HeadExplode1.ogg","ryanzombies\sounds\HeadExplode2.ogg","ryanzombies\sounds\HeadExplode3.ogg"];_HeadExplode=selectRandom _HeadExplodeArray;playsound3d[format["%1",_HeadExplode],player,false,getPosASL player,10,1,30];}else{private["_r"];_r=random 100;if(_r<45) then{if(!a3s_IsUnconscious) then{call A3SClient_fnc_Unconscious;};}else{player setdamage 1;};};};};
+}

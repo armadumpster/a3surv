@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_event_onFired'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_event_onFired';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\eventhandler\fn_event_onFired.sqf [A3SClient_fnc_event_onFired]"
+
+scriptName"fn_event_onFired";_weapon=_this select 1;switch(_weapon) do {case"A3S_Melee_Axe":{player playActionNow"A3s_AxeSwing";call A3SClient_fnc_object_tree_chop;};case"A3S_Melee_Baseballbat":{player playActionNow"A3s_AxeSwing";};};if(_weapon!=(toLower"throw")&&_weapon!="A3S_Melee_Axe"&&_weapon!="A3S_Melee_Baseballbat") then{if(!((((primaryWeaponItems player) select 0)!=""AND((currentWeapon player) isEqualTo(primaryWeapon player))) OR(((handgunItems player) select 0)!=""AND((currentWeapon player) isEqualTo(handgunWeapon player))))) then{if(isNil{player getVariable"fired"}) then{player setVariable["fired",true,true];[]spawn{uisleep 4;player setVariable["fired",nil,true];
+};};};a3s_inCombat=true;a3s_lastCombatAt=diag_tickTime;if((diag_tickTime-a3s_force_lastShot)<=0.45) then{a3s_force_multiplier=(a3s_force_multiplier+0.025) min 1;}else{a3s_force_multiplier=0;};a3s_force_cc ppEffectAdjust[1,1,0,[1,1,1,-0.04],[1,1,1,0.9-(0.5*a3s_force_multiplier)],[0,0,0,0]];a3s_force_cc ppEffectCommit 0;a3s_force_blur ppEffectAdjust[0.009+(0.025*a3s_force_multiplier),0.09+(0.025*a3s_force_multiplier),0.1,0.1];a3s_force_blur ppEffectCommit 0;a3s_force_cc ppEffectAdjust[1,1,0,[1,1,1,0],[1,1,1,1],[0,0,0,0]];a3s_force_cc ppEffectCommit 0.05+(0.65*a3s_force_multiplier);a3s_force_blur ppEffectAdjust[0,0,0,0];a3s_force_blur ppEffectCommit 0.12+(0.16*a3s_force_multiplier);a3s_force_lastShot=diag_tickTime;};
+}

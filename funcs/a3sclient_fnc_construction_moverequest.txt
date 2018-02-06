@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_Construction_MoveRequest'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_Construction_MoveRequest';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\basebuilding\fn_Construction_MoveRequest.sqf [A3SClient_fnc_Construction_MoveRequest]"
+
+scriptName"fn_Construction_MoveRequest";private["_object","_result"];disableSerialization;_object=a3s_pInact_curTarget;setMousePosition[0.5,0.5];_result=["Do you really want to move this object?","Move?","Yes","No"]call BIS_fnc_guiMessage;waitUntil{uiSleep 0.05;
+!isNil"_result"};if(_result) then{if(a3s_inCombat) then {["<t color='#ffff00'>You cannot move the object during a combat</t>"]call A3SClient_fnc_addToFeed;}else {a3s_ConstructionPosition=getPosATL _object;[netId _object,player]remoteExecCall["A3SServer_fnc_Construction_moveRequest",2];};};true
+}

@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_preInit'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_preInit';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\fn_preInit.sqf [A3SClient_fnc_preInit]"
+
+scriptName"fn_preInit";
+call A3SClient_fnc_Configuration;true
+}

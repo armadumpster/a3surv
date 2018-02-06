@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_deathscreen'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_deathscreen';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\functions\fn_deathscreen.sqf [A3SClient_fnc_deathscreen]"
+
+scriptName"fn_deathscreen";disableSerialization;_ctrl=uiNamespace getVariable"A3S_Deathscreen";_deathmessage=_ctrl select 0;_time=a3s_deathscreen_time;_deathmessage ctrlSetStructuredText parseText format["<t align='center' shadow='0' size='1.2' color='#99ffffff' font='CrayonHand'>You are dead</t>"];uisleep 10;while{_time!=0}do{_deathmessage ctrlSetStructuredText parseText format["<t align='center' shadow='0' size='1.2' color='#99ffffff' font='CrayonHand'>Respawning in %1 seconds... Please wait.</t>",_time];
+_time=_time-1;uisleep 1;if(_time isEqualTo 0) then{_deathmessage ctrlSetStructuredText parseText format["<t align='center' shadow='0' size='1.2' color='#99ffffff' font='CrayonHand'>Respawning ... Please wait.</t>"];[]spawn A3SClient_fnc_Respawn;};};
+}

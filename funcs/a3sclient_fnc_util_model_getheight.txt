@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_util_model_getHeight'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_util_model_getHeight';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\functions\fn_util_model_getHeight.sqf [A3SClient_fnc_util_model_getHeight]"
+
+scriptName"fn_util_model_getHeight";private["_object","_height","_boundingBox","_boundingBoxMinimum","_boundingBoxMaximum"];_object=_this;_height=0;
+_boundingBox=boundingBoxReal _object;_boundingBoxMinimum=_boundingBox select 0;_boundingBoxMaximum=_boundingBox select 1;_height=abs((_boundingBoxMaximum select 2)-(_boundingBoxMinimum select 2));_height
+}

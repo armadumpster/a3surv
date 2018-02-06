@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_util_world_isFireInRange'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_util_world_isFireInRange';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\functions\fn_util_world_isFireInRange.sqf [A3SClient_fnc_util_world_isFireInRange]"
+
+scriptName"fn_util_world_isFireInRange";private["_position","_range","_isInRange"];_position=_this select 0;
+_range=_this select 1;_isInRange=false;{if(inflamed _x) exitWith {_isInRange=true;};}forEach(_position nearObjects _range);_isInRange
+}

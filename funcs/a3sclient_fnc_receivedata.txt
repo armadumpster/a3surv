@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_receiveData'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_receiveData';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\database\fn_receiveData.sqf [A3SClient_fnc_receiveData]"
+
+scriptName"fn_receiveData";_data=param[0,[],[[]]];if(count _data<1) exitwith{};a3s_PositionATL_Dir=_data select 0;a3s_Inventory=_data select 1;a3s_Alive=if((_data select 2) isEqualTo 1) then{true}else{false};a3s_inCombat=if((_data select 3) isEqualTo 1) then{true}else{false};a3s_Hunger=(_data select 4) select 0;a3s_Thirst=(_data select 4) select 1;
+a3s_brokenLegs=if(((_data select 4) select 2) isEqualTo 1) then{true}else{false};a3s_infected=if(((_data select 4) select 3) isEqualTo 1) then{true}else{false};a3s_TimeSurvived=(_data select 5);a3s_ZombiesKilled=(_data select 6);a3s_PlayersKilled=(_data select 7);a3s_Temperature=(_data select 4) select 4;a3s_Wetness=(_data select 4) select 5;a3s_local_skin=(_data select 8) select 0;a3s_playerStatsReceived=true;
+}

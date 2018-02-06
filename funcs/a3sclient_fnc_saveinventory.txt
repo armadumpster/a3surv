@@ -1,0 +1,10 @@
+{
+	private _fnc_scriptNameParent = if (isNil '_fnc_scriptName') then {'A3SClient_fnc_saveInventory'} else {_fnc_scriptName};
+	private _fnc_scriptName = 'A3SClient_fnc_saveInventory';
+	scriptName _fnc_scriptName;
+
+#line 1 "A3S_client\bin\scripts\basebuilding\fn_saveInventory.sqf [A3SClient_fnc_saveInventory]"
+
+scriptName"fn_saveInventory";_myInventory=[];_myInventory pushBack[uniform player,backpack player,vest player,goggles player,headgear player];_myInventory pushback[uniformItems player,backpackItems player,vestItems player];_myInventory pushBack[primaryWeapon player,primaryWeaponItems player,(primaryWeaponMagazine player)];
+_myInventory pushback[secondaryWeapon player,secondaryWeaponItems player,(secondaryWeaponMagazine player)];_myInventory pushBack(assignedItems player);_myInventory pushBack[handgunWeapon player,handgunItems player,(handgunMagazine player)];a3s_Inventory=_myInventory;profileNamespace setVariable["loadout",a3s_Inventory];saveProfileNamespace;true
+}
